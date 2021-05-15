@@ -8,7 +8,7 @@
     tools:context=".tela_login_screen_medico">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_tela_login_screen_medico_entrar"
         android:layout_width="118dp"
         android:layout_height="57dp"
         android:text="ENTRAR"
