@@ -51,7 +51,7 @@
         app:tint="@color/principal" />
 
     <ImageButton
-        android:id="@+id/imageButton16"
+        android:id="@+id/imageButton_tela_verifica_receita_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"

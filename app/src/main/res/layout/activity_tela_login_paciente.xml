@@ -8,7 +8,7 @@
     tools:context=".tela_login_paciente">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_tela_paciente_entrar"
         android:layout_width="118dp"
         android:layout_height="57dp"
         android:text="ENTRAR"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.813" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/button_tela_paciente_criar_conta"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

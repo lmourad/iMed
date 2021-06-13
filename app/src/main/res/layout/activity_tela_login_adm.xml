@@ -21,7 +21,7 @@
         app:tint="@color/principal" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/button_tela_login_adm_entrar"
         android:layout_width="118dp"
         android:layout_height="57dp"
         android:text="ENTRAR"

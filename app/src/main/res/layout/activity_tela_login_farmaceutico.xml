@@ -81,7 +81,7 @@
         app:tint="@color/principal" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/tela_login_farmaceutico_entrar"
         android:layout_width="118dp"
         android:layout_height="57dp"
         android:text="ENTRAR"

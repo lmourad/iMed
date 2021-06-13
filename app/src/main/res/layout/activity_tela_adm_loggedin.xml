@@ -8,7 +8,7 @@
     tools:context=".tela_adm_loggedin">
 
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/imageButton_tela_adm_loggedin_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/ic_baseline_admin_panel_settings_24" />
 
     <ImageButton
-        android:id="@+id/imageButton11"
+        android:id="@+id/imageButton_tela_create_account_adm_entrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"

@@ -8,7 +8,7 @@
     tools:context=".tela_farmaceutico_loggedin_cadastrar_medicamento">
 
     <ImageButton
-        android:id="@+id/imageButton17"
+        android:id="@+id/imageButton_tela_cadastrar_medicamento_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
