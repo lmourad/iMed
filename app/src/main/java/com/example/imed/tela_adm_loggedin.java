@@ -9,7 +9,8 @@ import android.widget.ImageButton;
 
 public class tela_adm_loggedin extends AppCompatActivity {
 
-    ImageButton imageButton_tela_adm_loggedin_back, imageButton_tela_create_account_adm_entrar;
+    ImageButton imageButton_tela_adm_loggedin_back;
+    ImageButton imageButton_go_to_create_account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,15 @@ public class tela_adm_loggedin extends AppCompatActivity {
             }
         });
 
-        imageButton_tela_create_account_adm_entrar = findViewById(R.id.imageButton_tela_create_account_adm_entrar);
-        imageButton_tela_create_account_adm_entrar.setOnClickListener(new View.OnClickListener() {
+        imageButton_go_to_create_account = findViewById(R.id.imageButton_go_to_create_account);
+        imageButton_go_to_create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_loggedin.this, tela_create_account_adm.class);
                 startActivity(intent);
             }
         });
+
+
     }
 }
