@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.941" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/imageButton_tela_create_account_adm_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -128,35 +128,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.219" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/principal"
-        android:text="MÉDICO"
-        android:textColor="@color/principal"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="411dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        tools:visibility="visible">
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/principal"
-        android:text="FARMACÊUTICO"
-        android:textColor="@color/principal"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.253"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        <RadioButton
+            android:id="@+id/radioButton2"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/principal"
+            android:text="FARMACÊUTICO"
+            android:textColor="@color/principal"
+            android:textSize="12sp"
+            android:onClick="checkJob"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/principal"
+            android:text="MÉDICO"
+            android:textColor="@color/principal"
+            android:textSize="12sp"
+            android:onClick="checkJob"
+            />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
