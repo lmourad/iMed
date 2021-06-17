@@ -8,7 +8,7 @@
     tools:context=".tela_create_account_paciente">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button_create_account_paciente"
         android:layout_width="127dp"
         android:layout_height="53dp"
         android:text="CRIAR CONTA"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.93" />
 
     <EditText
-        android:id="@+id/textView_tela_login_paciente_cpf7"
+        android:id="@+id/textView_tela_loggedin_paciente_senha_repeat"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <EditText
-        android:id="@+id/textView_tela_login_paciente_cpf10"
+        android:id="@+id/textView_tela_loggedin_paciente_senha"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -127,5 +127,17 @@
         app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@drawable/user_icon"
         app:tint="@color/principal" />
+
+    <ImageView
+        android:id="@+id/imageView_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.753"
+        app:srcCompat="?attr/listChoiceBackgroundIndicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

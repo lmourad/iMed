@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMed">
-        <activity android:name=".tela_farmaceutico_loggedin_cadastrar_medicamento"></activity>
+        <activity android:name=".tela_delete_account"></activity>
+        <activity android:name=".tela_estoque_medico" />
+        <activity android:name=".tela_estoque" />
+        <activity android:name=".tela_farmaceutico_loggedin_cadastrar_medicamento" />
         <activity android:name=".tela_farmaceutico_loggedin_verifica_receita" />
-        <activity android:name= ".tela_create_account_adm"/>
+        <activity android:name=".tela_create_account_adm" />
         <activity android:name=".tela_paciente_loggedin" />
         <activity android:name=".tela_adm_loggedin" />
         <activity android:name=".tela_farmaceutico_loggedin" />

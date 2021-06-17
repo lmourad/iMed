@@ -12,6 +12,7 @@ public class tela_login_paciente extends AppCompatActivity {
 
     ImageButton imageButton_tela_login_paciente_back;
     Button button_tela_paciente_entrar, button_tela_paciente_criar_conta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
