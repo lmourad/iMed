@@ -1,8 +1,9 @@
 package com.example.imed;
 
-public class Usuario {
+public abstract class Usuario {
 
     private String nome;
+    private String senha;
 
     public String getNome() {
         return nome;
@@ -20,10 +21,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    private String senha;
+
 
     Usuario(){
 
     }
+
 
 }

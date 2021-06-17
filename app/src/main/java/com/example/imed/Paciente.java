@@ -2,6 +2,8 @@ package com.example.imed;
 
 public class Paciente extends Usuario {
 
+    String cpf;
+
     public String getCpf() {
         return cpf;
     }
@@ -10,5 +12,8 @@ public class Paciente extends Usuario {
         this.cpf = cpf;
     }
 
-    String cpf;
+    Paciente(){
+
+    }
+
 }

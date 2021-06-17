@@ -2,6 +2,8 @@ package com.example.imed;
 
 public class Farmaceutico extends Usuario{
 
+    String crf;
+
     public String getCrf() {
         return crf;
     }
@@ -10,7 +12,7 @@ public class Farmaceutico extends Usuario{
         this.crf = crf;
     }
 
-    String crf;
+
 
     Farmaceutico(){
 
