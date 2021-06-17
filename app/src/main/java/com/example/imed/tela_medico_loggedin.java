@@ -20,7 +20,7 @@ public class tela_medico_loggedin extends AppCompatActivity {
         //=================================================//
 
         imageButton_tela_login_screen_medico_back = findViewById(R.id.imageButton_tela_login_screen_medico_back);
-        imageButton_tela_medico_estoque = findViewById(R.id.imageButton_tela_medico_estoque);
+        imageButton_tela_medico_estoque = findViewById(R.id.imageButton_tela_medico_estoque1);
 
         //=================================================//
 

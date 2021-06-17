@@ -8,7 +8,7 @@
     tools:context=".tela_medico_loggedin">
 
     <ImageButton
-        android:id="@+id/imageButton_tela_medico_estoque"
+        android:id="@+id/imageButton_tela_medico_estoque1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
