@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMed">
-        <activity android:name=".tela_delete_account"></activity>
+        <activity android:name=".tela_delete_account" />
         <activity android:name=".tela_estoque_medico" />
         <activity android:name=".tela_estoque" />
         <activity android:name=".tela_farmaceutico_loggedin_cadastrar_medicamento" />
