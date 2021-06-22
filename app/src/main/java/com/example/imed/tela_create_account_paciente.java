@@ -56,7 +56,7 @@ public class tela_create_account_paciente extends AppCompatActivity {
                 paciente.setSenha(textView_senha_paciente.getText().toString());
                 paciente.setCpf(textView_cpf_paciente.getText().toString());
 
-                dao.inserir(paciente);
+                dao.inserirPaciente(paciente);
 
 
                 Context context = getApplicationContext();
@@ -67,8 +67,8 @@ public class tela_create_account_paciente extends AppCompatActivity {
                 toast.show();
 
                 
-//                Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
-//                startActivity(intent);
+                Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
+                startActivity(intent);
 
             }
         });

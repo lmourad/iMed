@@ -13,6 +13,11 @@ import android.widget.Toast;
 
 public class tela_login_paciente extends AppCompatActivity {
 
+//    private Context meuContexto;
+//
+//    public tela_login_paciente(Context context){
+//        meuContexto = context;
+//    }
 
     ImageButton imageButton_tela_login_paciente_back;
     Button button_tela_paciente_entrar, button_tela_paciente_criar_conta;
@@ -38,8 +43,8 @@ public class tela_login_paciente extends AppCompatActivity {
         button_tela_paciente_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             Intent intent = new Intent(tela_login_paciente.this, tela_paciente_loggedin.class);
-             startActivity(intent);
+//              Intent intent = new Intent(tela_login_paciente.this, tela_paciente_loggedin.class);
+//              startActivity(intent);
 
             }
         });

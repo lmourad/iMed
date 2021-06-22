@@ -5,18 +5,27 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClasseDAO {
 
     private Conexão conexão;
     private SQLiteDatabase banco;
 
-    public ClasseDAO(Context context){
-        conexão = new Conexão(context);
-        banco = conexão.getReadableDatabase();
+    public ClasseDAO(Context context) {
+        try {
+            conexão = new Conexão(context);
+            banco = conexão.getReadableDatabase();
+        }catch (Exception e){
+           System.out.println(e);
+        }
     }
 
-    public void inserir(Paciente paciente){
+    public void inserirPaciente(Paciente paciente){
         ContentValues values = new ContentValues();
         values.put("cpf", paciente.getCpf());
         values.put("nome", paciente.getNome());
@@ -24,17 +33,18 @@ public class ClasseDAO {
         banco.insert("Paciente", null, values);
     }
 
-    public String busca(String cpf){
-        String sql_busca_paciente = "select cpf from paciente where cpf = '" + cpf +"'";
-        Cursor cursor = banco.rawQuery(sql_busca_paciente, null);
-
+    public List<Paciente> obterPaciente(){
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        Cursor cursor = banco.query("paciente", new String[]{"cpf","nome","senha"}, null,null,null,null,null);
         while(cursor.moveToNext()){
-            TesteDB testeDB = new TesteDB();
-            testeDB.setTesteCpf(cursor.getString(cursor.getColumnIndex("cpf")));
+            Paciente p = new Paciente();
+            p.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
+            p.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            p.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+
+            pacientes.add(p);
         }
-        banco.close();
-        cursor.close();
-        return sql_busca_paciente;
+        return pacientes;
     }
 
 
