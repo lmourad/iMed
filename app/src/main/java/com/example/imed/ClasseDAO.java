@@ -47,6 +47,10 @@ public class ClasseDAO {
         return pacientes;
     }
 
+    public void excluirPaciente(Paciente p){
+        banco.delete("Paciente", "id = ?", new String []{p.getCpf().toString()});
+    }
+
 
 
 }

@@ -20,7 +20,7 @@ public class tela_create_account_paciente extends AppCompatActivity {
     private ImageButton imageButton_tela_create_account_login_paciente_back;
     private Button Button_criar_conta_paciente;
     private TextView textView_nome_paciente, textView_cpf_paciente, textView_senha_paciente, textView_repetir_senha_paciente;
-    private ClasseDAO dao;
+
 
 
     @Override
@@ -44,8 +44,6 @@ public class tela_create_account_paciente extends AppCompatActivity {
         textView_senha_paciente = findViewById(R.id.textView_senha_paciente);
         textView_repetir_senha_paciente = findViewById(R.id.textView_repetir_senha_paciente);
 
-        dao = new ClasseDAO(this);
-
 
         Button_criar_conta_paciente = findViewById(R.id.Button_criar_conta_paciente);
         Button_criar_conta_paciente.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +53,6 @@ public class tela_create_account_paciente extends AppCompatActivity {
                 paciente.setNome(textView_nome_paciente.getText().toString()) ;
                 paciente.setSenha(textView_senha_paciente.getText().toString());
                 paciente.setCpf(textView_cpf_paciente.getText().toString());
-
-                dao.inserirPaciente(paciente);
 
 
                 Context context = getApplicationContext();
