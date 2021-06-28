@@ -17,10 +17,10 @@ public class tela_create_account_paciente extends AppCompatActivity {
 
     Paciente paciente = new Paciente();
 
+
     private ImageButton imageButton_tela_create_account_login_paciente_back;
     private Button Button_criar_conta_paciente;
     private TextView textView_nome_paciente, textView_cpf_paciente, textView_senha_paciente, textView_repetir_senha_paciente;
-
 
 
     @Override
@@ -39,6 +39,8 @@ public class tela_create_account_paciente extends AppCompatActivity {
 
         });
 
+        ClasseDAO dao = new ClasseDAO(this);
+
         textView_nome_paciente = findViewById(R.id.textView_nome_paciente);
         textView_cpf_paciente = findViewById(R.id.textView_cpf_paciente);
         textView_senha_paciente = findViewById(R.id.textView_senha_paciente);
@@ -55,6 +57,8 @@ public class tela_create_account_paciente extends AppCompatActivity {
                 paciente.setCpf(textView_cpf_paciente.getText().toString());
 
 
+                dao.inserirPaciente(paciente);
+
                 Context context = getApplicationContext();
                 CharSequence text = "Conta criada com sucesso!";
                 int duration = Toast.LENGTH_SHORT;
@@ -63,8 +67,8 @@ public class tela_create_account_paciente extends AppCompatActivity {
                 toast.show();
 
                 
-                Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
-                startActivity(intent);
+//                Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
+//                startActivity(intent);
 
             }
         });
