@@ -16,18 +16,20 @@ public class MainActivity extends AppCompatActivity {
     ImageButton imageButton_farmaceutico;
     Button button_adm;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         button_paciente = findViewById(R.id.button_paciente);
         button_paciente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dao.abrir();
                 Intent intent = new Intent(MainActivity.this, tela_login_paciente.class);
                 startActivity(intent);
             }
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         imageButton_medico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dao.abrir();
                 Intent intent = new Intent(MainActivity.this, tela_login_screen_medico.class);
                 startActivity(intent);
             }
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         button_adm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dao.abrir();
                 Intent intent = new Intent(MainActivity.this, tela_login_adm.class);
                 startActivity(intent);
             }
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         imageButton_farmaceutico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dao.abrir();
                 Intent intent = new Intent(MainActivity.this, tela_login_farmaceutico.class);
                 startActivity(intent);
             }

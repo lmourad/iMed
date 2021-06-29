@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.MaskFilter;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,26 +53,23 @@ public class tela_create_account_paciente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                paciente.setNome(textView_nome_paciente.getText().toString()) ;
-                paciente.setSenha(textView_senha_paciente.getText().toString());
-                paciente.setCpf(textView_cpf_paciente.getText().toString());
+                try {
+                    paciente.setNome(textView_nome_paciente.getText().toString());
+                    paciente.setSenha(textView_senha_paciente.getText().toString());
+                    paciente.setCpf(textView_cpf_paciente.getText().toString());
 
+                    dao.inserirPaciente(paciente);
 
-                dao.inserirPaciente(paciente);
+                    Toast.makeText(tela_create_account_paciente.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
 
-                Context context = getApplicationContext();
-                CharSequence text = "Conta criada com sucesso!";
-                int duration = Toast.LENGTH_SHORT;
+                    Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
+                    startActivity(intent);
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-
-                
-//                Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
-//                startActivity(intent);
-
+            }catch (SQLiteConstraintException e){
+                    Toast.makeText(tela_create_account_paciente.this, "Esse CPF já foi cadastrado", Toast.LENGTH_SHORT).show();
+                }
             }
-        });
+            });
 
 
 

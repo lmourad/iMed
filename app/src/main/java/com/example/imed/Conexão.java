@@ -3,6 +3,7 @@ package com.example.imed;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -18,6 +19,7 @@ public class Conexão extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
 
         db.execSQL("Pragma foreign_keys = ON;");
 
@@ -65,8 +67,10 @@ public class Conexão extends SQLiteOpenHelper {
                 "foreign key(fk_idReceita) references receita(idReceita)," +
                 "foreign key(fk_crm_med) references medico(crm)," +
                 "foreign key(fk_crf_farm) references farmaceutico(crf))");
-      }
 
+        db.execSQL("insert into adm(adm_nome, adm_senha) values('Conta adm','senhaadm123')");
+
+      }
 
 
     @Override
