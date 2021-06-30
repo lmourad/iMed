@@ -58,8 +58,27 @@ public class ClasseDAO {
         values.put("crf", farmaceutico.getCrf());
         values.put("farm_nome",farmaceutico.getNome());
         values.put("farm_senha", farmaceutico.getSenha());
-        values.put("fk_adm_farm", "Conta adm");
+
+
+        values.put("fk_adm_farm", "Conta adm");///Corrigir!!!!
+
         banco.insertOrThrow("farmaceutico",null,values);
+    }
+
+    public void inserirMedicamentos(Medicamentos medicamentos){
+        ContentValues values = new ContentValues();
+        values.put("catmat", medicamentos.getCatmat());
+        values.put("pr_ativo", medicamentos.getPr_ativo());
+        values.put("concentracao", medicamentos.getConcentracao());
+        values.put("fornecimento", medicamentos.getFornecimento());
+        values.put("forma_farm",medicamentos.getForma_farm());
+
+        values.put("quantidade", 1);
+        values.put("fk_idReceita", 1);
+        values.put("fk_crm_med", ""); ///Corrigir!!!!
+        values.put("fk_crf_farm","");
+
+        banco.insertOrThrow("medicamento", null, values);
     }
 
 //    public List<Paciente> obterPaciente(){

@@ -86,6 +86,7 @@ public class tela_create_account_adm extends AppCompatActivity {
         button_criar_conta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            //Colocar um outro tratamento de exceção aqui, para considerar os radiobuttons sem ser selecionado
                 try{
                     if(radioButton_farmaceutico.isChecked()){
                         farmaceutico.setNome(textView_nome_farm_med.getText().toString());
@@ -103,7 +104,7 @@ public class tela_create_account_adm extends AppCompatActivity {
                     }
 
                 }catch (SQLiteConstraintException e){
-                    Toast.makeText(tela_create_account_adm.this, "Esse CRM/CRF já já foi cadastrado!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(tela_create_account_adm.this, "Esse CRM/CRF já foi cadastrado!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

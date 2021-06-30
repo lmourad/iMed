@@ -15,11 +15,8 @@ public class Conexão extends SQLiteOpenHelper {
     private static final String name = "banco.db";
     private static final int version = 1;
 
-
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-
 
         db.execSQL("Pragma foreign_keys = ON;");
 
@@ -55,7 +52,7 @@ public class Conexão extends SQLiteOpenHelper {
                 "foreign key(fk_farm) references farmaceutico(crf)," +
                 "foreign key(fk_med) references medico(crm))");
 
-        db.execSQL("create table medicamento(carmat varchar(45) primary key not null," +
+        db.execSQL("create table medicamento(catmat varchar(45) primary key not null," +
                 "concentracao varchar(45) not null," +
                 "pr_ativo varchar(45) not null, " +
                 "fornecimento varchar(45) not null," +

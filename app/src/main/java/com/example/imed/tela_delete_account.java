@@ -16,9 +16,8 @@ public class tela_delete_account extends AppCompatActivity {
 
 
 
-    ClasseDAO dao = new ClasseDAO(this);
     ImageButton imageButton_tela_adm_delete_account_go_back, imageButton_tela_adm_loggedin_delete;
-    ListView Lista;
+
 
 
 

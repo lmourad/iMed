@@ -58,13 +58,17 @@ public class tela_create_account_paciente extends AppCompatActivity {
                     paciente.setSenha(textView_senha_paciente.getText().toString());
                     paciente.setCpf(textView_cpf_paciente.getText().toString());
 
-                    dao.inserirPaciente(paciente);
+                    if(paciente.getSenha().equals(textView_repetir_senha_paciente.getText().toString()) == true) {
+                        dao.inserirPaciente(paciente);
 
-                    Toast.makeText(tela_create_account_paciente.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(tela_create_account_paciente.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
-                    startActivity(intent);
-
+                        Intent intent = new Intent(tela_create_account_paciente.this, tela_login_paciente.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(tela_create_account_paciente.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
+                    }
             }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_create_account_paciente.this, "Esse CPF já foi cadastrado", Toast.LENGTH_SHORT).show();
                 }
