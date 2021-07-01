@@ -3,6 +3,8 @@ package com.example.imed;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,20 +12,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class tela_delete_account extends AppCompatActivity {
 
 
 
-    ImageButton imageButton_tela_adm_delete_account_go_back, imageButton_tela_adm_loggedin_delete;
+    ImageButton imageButton_tela_adm_delete_account_go_back, imageButton_tela_adm_loggedin_delete,imageButton_excluir,imageButton_update;
     RadioButton radioButton_farmaceutico_lista,radioButton_medico_lista;
     ListView ListaContas;
+
+
     private List<Farmaceutico> farmaceuticos;
     private List<Medico> medicos;
-
+    private View previousColor;
 
 
 
@@ -36,9 +40,8 @@ public class tela_delete_account extends AppCompatActivity {
         setContentView(R.layout.activity_tela_delete_account);
 
         //==============================================//
-
         imageButton_tela_adm_delete_account_go_back = findViewById(R.id.imageButton_tela_adm_delete_account_go_back);
-        imageButton_tela_adm_loggedin_delete = findViewById(R.id.imageButton_tela_adm_loggedin_delete);
+        imageButton_tela_adm_loggedin_delete = findViewById(R.id.imageButton_excluir);
         radioButton_farmaceutico_lista = findViewById(R.id.radioButton_farmaceutico_lista);
         radioButton_medico_lista = findViewById(R.id.radioButton_medico_lista);
         ListaContas = findViewById(R.id.ListaContas);
@@ -78,7 +81,21 @@ public class tela_delete_account extends AppCompatActivity {
 
         //==============================================//
 
+            ListaContas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String item = ListaContas.getItemAtPosition(position).toString();
+                    Drawable corAnterior = view.getBackground();
+                    if(previousColor!= null){
+                        previousColor.setBackground(corAnterior);
+                    }
+                    previousColor = view;
+                    view.setBackgroundColor(Color.parseColor("#00d165"));
+                }
+            });
+
         //==============================================//
+
 
 
         imageButton_tela_adm_loggedin_delete.setOnClickListener(new View.OnClickListener() {
