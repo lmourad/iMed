@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="CRF:"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textColor="@color/principal"
         android:textColorHint="@color/principal"
         android:textColorLink="@color/principal"

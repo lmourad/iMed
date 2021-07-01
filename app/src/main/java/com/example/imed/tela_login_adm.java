@@ -54,9 +54,7 @@ public class tela_login_adm extends AppCompatActivity {
                 }catch (NullPointerException e){
                     Toast.makeText(tela_login_adm.this, "Dados incorretos!", Toast.LENGTH_SHORT).show();
                 }
-
-
-
+                
 
             }
         });

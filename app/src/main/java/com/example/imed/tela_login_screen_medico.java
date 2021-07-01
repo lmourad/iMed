@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,7 +28,10 @@ public class tela_login_screen_medico extends AppCompatActivity {
         setContentView(R.layout.activity_tela_login_screen_medico);
 
         imgButton_back_tela_login_screen_medico = findViewById(R.id.imgButton_back_tela_login_screen_medico);
+
         textField_tela_login_screen_medico_crm = findViewById(R.id.textField_tela_login_screen_medico_crm);
+        textField_tela_login_screen_medico_crm.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
+
         textPassword_tela_login_screen_medico = findViewById(R.id.textPassword_tela_login_screen_medico);
 
 

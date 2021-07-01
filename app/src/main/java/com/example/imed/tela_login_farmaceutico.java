@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,6 +26,9 @@ public class tela_login_farmaceutico extends AppCompatActivity {
         setContentView(R.layout.activity_tela_login_farmaceutico);
 
         textView_tela_login_farmaceutico_crf = findViewById(R.id.textView_tela_login_farmaceutico_crf);
+        textView_tela_login_farmaceutico_crf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
+
+
         textView_tela_login_farmaceutico_senha = findViewById(R.id.textView_tela_login_farmaceutico_senha);
         tela_login_farmaceutico_entrar = findViewById(R.id.tela_login_farmaceutico_entrar);
 

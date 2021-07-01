@@ -48,7 +48,7 @@ public class ClasseDAO {
         values.put("crm", medico.getCrm());
         values.put("med_nome", medico.getNome());
         values.put("med_senha", medico.getSenha());
-        values.put("fk_adm_med", "Conta adm");
+        values.put("fk_adm_med", "adm");
         banco.insertOrThrow("medico",null,values);
     }
 
@@ -59,7 +59,7 @@ public class ClasseDAO {
         values.put("farm_senha", farmaceutico.getSenha());
 
 
-        values.put("fk_adm_farm", "Conta adm");///Corrigir!!!!
+        values.put("fk_adm_farm", "adm");///Corrigir!!!!
 
         banco.insertOrThrow("farmaceutico",null,values);
     }
@@ -125,8 +125,32 @@ public class ClasseDAO {
         return objeto;
     }
 
+    public List<Farmaceutico> obterListaFarmaceutico(){
+        ArrayList<Farmaceutico> farmaceuticos = new ArrayList<>();
+        Cursor cursor = banco.query("farmaceutico", new String[]{"crf","farm_nome"},null,null,null,null,null);
+        while(cursor.moveToNext()) {
+            Farmaceutico f = new Farmaceutico();
+            f.setCrf(cursor.getString(cursor.getColumnIndex("crf")));
+            f.setNome(cursor.getString(cursor.getColumnIndex("farm_nome")));
+            farmaceuticos.add(f);
+        }
 
-//    public List<Paciente> obterPaciente(){
+        return farmaceuticos;
+    }
+    public List<Medico> obterListaMedico(){
+        ArrayList<Medico> medicos = new ArrayList<>();
+        Cursor cursor = banco.query("medico", new String[]{"crm", "med_nome"},null,null,null,null,null);
+
+        while(cursor.moveToNext()){
+            Medico m = new Medico();
+            m.setCrm(cursor.getString(cursor.getColumnIndex("crm")));
+            m.setNome(cursor.getString(cursor.getColumnIndex("med_nome")));
+            medicos.add(m);
+        }
+        return medicos;
+    }
+
+//    public List<paciente> obterPaciente(){
 //        ArrayList<Paciente> pacientes = new ArrayList<>();
 //        Cursor cursor = banco.query("paciente", new String[]{"cpf","paciente_nome","paciente_senha"}, null,null,null,null,null);
 //        while(cursor.moveToNext()){
@@ -138,7 +162,7 @@ public class ClasseDAO {
 //            pacientes.add(p);
 //        }
 //        return pacientes;
-//    }
+    //}
 
 //    public void excluirPaciente(Paciente p){
 //        banco.delete("paciente", "id = ?", new String []{p.getCpf().toString()});

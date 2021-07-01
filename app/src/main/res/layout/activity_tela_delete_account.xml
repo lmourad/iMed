@@ -7,6 +7,36 @@
     android:background="@drawable/gradient_backgroud"
     tools:context=".tela_delete_account">
 
+    <RadioButton
+        android:id="@+id/radioButton_medico_lista"
+        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:buttonTint="@color/principal"
+        android:text="MÉDICOS"
+        android:textColor="@color/principal"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <RadioButton
+        android:id="@+id/radioButton_farmaceutico_lista"
+        style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:buttonTint="@color/principal"
+        android:text="FARMACÊUTICOS"
+        android:textColor="@color/principal"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
+
     <ImageButton
         android:id="@+id/imageButton_tela_adm_delete_account_go_back"
         android:layout_width="wrap_content"
@@ -86,14 +116,18 @@
         app:srcCompat="@drawable/ic_baseline_admin_panel_settings_24" />
 
     <ListView
-        android:id="@+id/Lista"
-        android:layout_width="409dp"
-        android:layout_height="550dp"
+        android:id="@+id/ListaContas"
+        android:layout_width="357dp"
+        android:layout_height="474dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton_tela_adm_loggedin_delete"
+        android:layout_marginBottom="24dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_tela_adm_delete_account_go_back" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.397"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

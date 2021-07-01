@@ -11,4 +11,10 @@ public class Medico extends Usuario{
     public void setCrm(String crm) {
         this.crm = crm;
     }
+
+
+    @Override
+    public String toString(){
+        return "CRM-SP " + getCrm() + "   ---   " + "Nome: " + getNome();
+    }
 }

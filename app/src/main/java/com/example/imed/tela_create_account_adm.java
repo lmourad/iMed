@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteConstraintException;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,8 @@ public class tela_create_account_adm extends AppCompatActivity {
         radioButton_farmaceutico = findViewById(R.id.radioButton_farmaceutico);
         radioButton_medico = findViewById(R.id.radioButton_medico);
 
+        radioButton_farmaceutico.setChecked(true);
+
         radioButton_medico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +81,10 @@ public class tela_create_account_adm extends AppCompatActivity {
         button_criar_conta = findViewById(R.id.button_criar_conta);
 
         textView_nome_farm_med = findViewById(R.id.textView_nome_farm_med);
+
         textView_crm_crf = findViewById(R.id.textView_crm_crf);
+        textView_crm_crf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
+
         textView_senha_farm_med = findViewById(R.id.textView_senha_farm_med);
         textView_repetir_senha_farm_med = findViewById(R.id.textView_repetir_senha_farm_med);
 

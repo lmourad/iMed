@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,10 @@ public class tela_login_paciente extends AppCompatActivity {
         });
 
         button_tela_paciente_entrar = findViewById(R.id.button_tela_paciente_entrar);
+
         textView_tela_login_paciente_cpf = findViewById(R.id.textView_tela_login_paciente_cpf);
+        textView_tela_login_paciente_cpf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+
         textView_tela_login_paciente_senha = findViewById(R.id.textView_tela_login_paciente_senha);
 
         button_tela_paciente_entrar.setOnClickListener(new View.OnClickListener() {

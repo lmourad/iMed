@@ -12,9 +12,5 @@ public class Paciente extends Usuario {
         this.cpf = cpf;
     }
 
-//    @Override
-//    public String toString(){
-//        return "nome: "+ getNome() + "\ncpf: " + cpf + "\nsenha: " + getSenha();
-//    }
 
 }

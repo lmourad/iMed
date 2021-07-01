@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.MaskFilter;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -43,7 +44,10 @@ public class tela_create_account_paciente extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         textView_nome_paciente = findViewById(R.id.textView_nome_paciente);
+        
         textView_cpf_paciente = findViewById(R.id.textView_cpf_paciente);
+        textView_cpf_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+        
         textView_senha_paciente = findViewById(R.id.textView_senha_paciente);
         textView_repetir_senha_paciente = findViewById(R.id.textView_repetir_senha_paciente);
 

@@ -23,13 +23,13 @@ public class Conexão extends SQLiteOpenHelper {
         db.execSQL("create table adm(adm_nome varchar(50) primary key not null, " +
                 "adm_senha varchar(45))");
 
-        db.execSQL("create table medico(crm varchar (20) primary key not null, " +
+        db.execSQL("create table medico(crm varchar (7) primary key not null, " +
                 "med_nome varchar(50), " +
                 "med_senha varchar(45) not null, " +
                 "fk_adm_med varchar (50) not null," +
                 "foreign key (fk_adm_med) references adm(adm_nome))");
 
-        db.execSQL("create table farmaceutico(crf varchar(20) primary key not null, " +
+        db.execSQL("create table farmaceutico(crf varchar(7) primary key not null, " +
                 "farm_nome varchar(50)," +
                 "farm_senha varchar(45) not null," +
                 "fk_adm_farm varchar(50) not null," +
@@ -44,7 +44,7 @@ public class Conexão extends SQLiteOpenHelper {
                 "fk_paciente varchar(11) not null," +
                 "foreign key (fk_paciente) references paciente(cpf))");
 
-        db.execSQL("create table receita(idReceita integer primary key autoincrement not null," +
+        db.execSQL("create table receita(idReceita integer primary key not null," +
                 "fk_paciente_rec varchar(11) not null," +
                 "fk_farm varchar(20) not null," +
                 "fk_med varchar(20) not null," +
@@ -65,7 +65,7 @@ public class Conexão extends SQLiteOpenHelper {
                 "foreign key(fk_crm_med) references medico(crm)," +
                 "foreign key(fk_crf_farm) references farmaceutico(crf))");
 
-        db.execSQL("insert into adm(adm_nome, adm_senha) values('Conta adm','senhaadm123')");
+        db.execSQL("insert into adm(adm_nome, adm_senha) values('adm','123')");
 
       }
 
