@@ -77,12 +77,12 @@
         app:layout_constraintVertical_bias="0.66" />
 
     <EditText
-        android:id="@+id/textNumber_tela_login_screen_medico_crm"
+        android:id="@+id/textField_tela_login_screen_medico_crm"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="CRM:"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:textColor="@color/principal"
         android:textColorHint="@color/principal"
         app:layout_constraintBottom_toBottomOf="parent"

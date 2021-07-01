@@ -34,7 +34,6 @@ public class ClasseDAO {
 
     }
 
-
     public void inserirPaciente(Paciente paciente){
         ContentValues values = new ContentValues();
         values.put("cpf", paciente.getCpf());
@@ -80,6 +79,52 @@ public class ClasseDAO {
 
         banco.insertOrThrow("medicamento", null, values);
     }
+
+    public Object[] obterLoginPaciente(String cpf){
+        Object[] objeto = new Object[1];
+
+        String busca = "select paciente_senha from paciente where cpf = " + "'" + cpf + "'";
+        Cursor cursor = banco.rawQuery(busca, null);
+        while (cursor.moveToNext()) {
+            objeto[0] = cursor.getString(cursor.getColumnIndex("paciente_senha"));
+        }
+        return objeto;
+    }
+    public Object[] obterLoginMedico(String crm){
+        Object[] objeto = new Object[1];
+
+        String busca = "select med_senha from medico where crm =" + "'"+ crm +"'";
+        Cursor cursor = banco.rawQuery(busca,null);
+        while (cursor.moveToNext()) {
+            objeto[0] = cursor.getString(cursor.getColumnIndex("med_senha"));
+        }
+        return objeto;
+    }
+
+    public Object[] obterLoginFarmaceutico(String crf){
+        Object[] objeto = new Object[1];
+        String busca = "select farm_senha from farmaceutico where crf =" + "'" + crf + "'";
+        Cursor cursor = banco.rawQuery(busca,null);
+
+        while (cursor.moveToNext()) {
+            objeto[0] = cursor.getString(cursor.getColumnIndex("farm_senha"));
+        }
+        return objeto;
+    }
+
+    public Object[] obterLoginAdm(String nome){
+        Object[] objeto = new Object[1];
+
+        String busca = "select adm_senha from adm where adm_nome = " + "'" + nome + "'";
+        Cursor cursor = banco.rawQuery(busca,null);
+
+        while (cursor.moveToNext()) {
+            objeto[0] = cursor.getString(cursor.getColumnIndex("adm_senha"));
+        }
+
+        return objeto;
+    }
+
 
 //    public List<Paciente> obterPaciente(){
 //        ArrayList<Paciente> pacientes = new ArrayList<>();

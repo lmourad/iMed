@@ -92,15 +92,40 @@ public class tela_create_account_adm extends AppCompatActivity {
                         farmaceutico.setNome(textView_nome_farm_med.getText().toString());
                         farmaceutico.setCrf(textView_crm_crf.getText().toString());
                         farmaceutico.setSenha(textView_senha_farm_med.getText().toString());
+                        if (farmaceutico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString()) == true ){
 
-                        dao.inserirFarmaceutico(farmaceutico);
+                            dao.inserirFarmaceutico(farmaceutico);
+
+                            Toast.makeText(tela_create_account_adm.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(tela_create_account_adm.this, tela_adm_loggedin.class);
+                            startActivity(intent);
+
+                        }
+                        else{
+                            Toast.makeText(tela_create_account_adm.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else{
+                    else if(radioButton_medico.isChecked()){
                         medico.setNome(textView_nome_farm_med.getText().toString());
                         medico.setCrm(textView_crm_crf.getText().toString());
                         medico.setSenha(textView_senha_farm_med.getText().toString());
 
-                        dao.inserirMedico(medico);
+                        if(medico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString())==true){
+
+                            dao.inserirMedico(medico);
+
+                            Toast.makeText(tela_create_account_adm.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(tela_create_account_adm.this, tela_adm_loggedin.class);
+                            startActivity(intent);
+
+
+                        }
+                        else{
+                            Toast.makeText(tela_create_account_adm.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(tela_create_account_adm.this, "Selecione uma profissão!", Toast.LENGTH_SHORT).show();
                     }
 
                 }catch (SQLiteConstraintException e){

@@ -69,7 +69,7 @@ public class tela_create_account_paciente extends AppCompatActivity {
                     else {
                         Toast.makeText(tela_create_account_paciente.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
                     }
-            }catch (SQLiteConstraintException e){
+                }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_create_account_paciente.this, "Esse CPF já foi cadastrado", Toast.LENGTH_SHORT).show();
                 }
             }

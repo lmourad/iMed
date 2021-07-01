@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nome:"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:textColor="@color/principal"
         android:textColorHint="@color/principal"
         app:layout_constraintBottom_toBottomOf="parent"
