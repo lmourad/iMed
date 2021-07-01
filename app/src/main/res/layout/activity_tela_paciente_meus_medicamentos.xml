@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_backgroud"
-    tools:context=".tela_paciente_loggedin">
+    tools:context=".tela_paciente_meus_medicamentos">
 
     <ImageButton
-        android:id="@+id/imageButton_tela_login_paciente_loggedin_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageButton_go_back_meus_medicamentos_to_paciente_loggedin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,67 +22,57 @@
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/imageView17"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.147"
         app:srcCompat="@drawable/user_icon"
         app:tint="@color/principal" />
 
-    <ImageButton
-        android:id="@+id/imageButton_go_to_minhas_receitas_paciente"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27"
-        app:srcCompat="@drawable/minhas_receitas_icon" />
-
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MINHAS RECEITAS"
+        android:text="GERAR RECEITA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.307" />
 
-    <ImageButton
-        android:id="@+id/imageButton_go_to_meus_medicamentos_paciente"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText_digitar_cpf_consulta_medicamentos"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="fitCenter"
+        android:ems="10"
+        android:hint="Digete seu CPF:"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/principal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705"
-        app:srcCompat="@drawable/meus_medicamentos_icon" />
+        app:layout_constraintVertical_bias="0.529" />
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MEUS MEDICAMENTOS"
+    <Button
+        android:id="@+id/button_procurar_meus_medicamentos"
+        android:layout_width="128dp"
+        android:layout_height="55dp"
+        android:text="PROCURAR"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="@android:dimen/thumbnail_width"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
-
+        app:layout_constraintVertical_bias="0.775" />
 </androidx.constraintlayout.widget.ConstraintLayout>

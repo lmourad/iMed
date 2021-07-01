@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.766" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButton_go_to_gerar_receita_med"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:background="?attr/selectableItemBackgroundBorderless"

@@ -13,7 +13,7 @@ public class Conexão extends SQLiteOpenHelper {
     }
 
     private static final String name = "banco.db";
-    private static final int version = 1;
+    private static final int version = 2;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -72,7 +72,7 @@ public class Conexão extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        onCreate(db);
     }
 
 }
