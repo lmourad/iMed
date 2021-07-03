@@ -13,7 +13,7 @@ public class Conexão extends SQLiteOpenHelper {
     }
 
     private static final String name = "banco.db";
-    private static final int version = 2;
+    private static final int version = 1;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -45,6 +45,10 @@ public class Conexão extends SQLiteOpenHelper {
                 "foreign key (fk_paciente) references paciente(cpf))");
 
         db.execSQL("create table receita(idReceita integer primary key not null," +
+                "nome_remedio varchar(30) not null, "+
+                "horario varchar(30) not null," +
+                "dosagem varchar(15) not null," +
+                "instrucoes varchar(50)not null," +
                 "fk_paciente_rec varchar(11) not null," +
                 "fk_farm varchar(20) not null," +
                 "fk_med varchar(20) not null," +

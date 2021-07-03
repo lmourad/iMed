@@ -62,7 +62,10 @@ public class tela_create_account_paciente extends AppCompatActivity {
                     paciente.setSenha(textView_senha_paciente.getText().toString());
                     paciente.setCpf(textView_cpf_paciente.getText().toString());
 
-                    if(paciente.getSenha().equals(textView_repetir_senha_paciente.getText().toString()) == true) {
+                    if(textView_nome_paciente.getText().toString().equals("") || textView_cpf_paciente.getText().toString().equals("") || textView_senha_paciente.getText().toString().equals("") || textView_repetir_senha_paciente.getText().toString().equals("")){
+                        Toast.makeText(tela_create_account_paciente.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(paciente.getSenha().equals(textView_repetir_senha_paciente.getText().toString()) == true) {
                         dao.inserirPaciente(paciente);
 
                         Toast.makeText(tela_create_account_paciente.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();

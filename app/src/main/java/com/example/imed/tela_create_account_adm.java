@@ -92,13 +92,15 @@ public class tela_create_account_adm extends AppCompatActivity {
         button_criar_conta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //Colocar um outro tratamento de exceção aqui, para considerar os radiobuttons sem ser selecionado
                 try{
                     if(radioButton_farmaceutico.isChecked()){
                         farmaceutico.setNome(textView_nome_farm_med.getText().toString());
                         farmaceutico.setCrf(textView_crm_crf.getText().toString());
                         farmaceutico.setSenha(textView_senha_farm_med.getText().toString());
-                        if (farmaceutico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString()) == true ){
+                        if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("") || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
+                            Toast.makeText(tela_create_account_adm.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (farmaceutico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString()) == true ){
 
                             dao.inserirFarmaceutico(farmaceutico);
 
@@ -111,29 +113,26 @@ public class tela_create_account_adm extends AppCompatActivity {
                             Toast.makeText(tela_create_account_adm.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    else if(radioButton_medico.isChecked()){
+                    else{
                         medico.setNome(textView_nome_farm_med.getText().toString());
                         medico.setCrm(textView_crm_crf.getText().toString());
                         medico.setSenha(textView_senha_farm_med.getText().toString());
 
-                        if(medico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString())==true){
+                        if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("") || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
+                            Toast.makeText(tela_create_account_adm.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(medico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString())==true){
 
                             dao.inserirMedico(medico);
 
                             Toast.makeText(tela_create_account_adm.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(tela_create_account_adm.this, tela_adm_loggedin.class);
                             startActivity(intent);
-
-
                         }
                         else{
                             Toast.makeText(tela_create_account_adm.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    else{
-                        Toast.makeText(tela_create_account_adm.this, "Selecione uma profissão!", Toast.LENGTH_SHORT).show();
-                    }
-
                 }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_create_account_adm.this, "Esse CRM/CRF já foi cadastrado!", Toast.LENGTH_SHORT).show();
                 }

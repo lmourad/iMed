@@ -34,6 +34,7 @@ public class ClasseDAO {
 
     }
 
+    //Método para cadastrar um paciente
     public void inserirPaciente(Paciente paciente){
         ContentValues values = new ContentValues();
         values.put("cpf", paciente.getCpf());
@@ -42,6 +43,7 @@ public class ClasseDAO {
         banco.insertOrThrow("paciente",null,values);
     }
 
+    //Método para cadastrar um medico
     public void inserirMedico(Medico medico) {
 
         ContentValues values = new ContentValues();
@@ -52,6 +54,7 @@ public class ClasseDAO {
         banco.insertOrThrow("medico",null,values);
     }
 
+    //Método para cadastrar um farmaceutico
     public void inserirFarmaceutico(Farmaceutico farmaceutico){
         ContentValues values = new ContentValues();
         values.put("crf", farmaceutico.getCrf());
@@ -64,6 +67,7 @@ public class ClasseDAO {
         banco.insertOrThrow("farmaceutico",null,values);
     }
 
+    //Método para criar um cadastro de medicamentos
     public void inserirMedicamentos(Medicamentos medicamentos){
         ContentValues values = new ContentValues();
         values.put("catmat", medicamentos.getCatmat());
@@ -80,6 +84,23 @@ public class ClasseDAO {
         banco.insertOrThrow("medicamento", null, values);
     }
 
+    //Método para gerar receitas
+    public void gerarReceita(Receita receita){
+        ContentValues values = new ContentValues();
+        values.put("idReceita",receita.getIdReceita());
+        values.put("nome_remedio", receita.getNome_remedio());
+        values.put("horario", receita.getHorario());
+        values.put("dosagem", receita.getDosagem());
+        values.put("instrucoes", receita.getInstrucoes());
+
+        values.put("fk_paciente_rec", receita.getFk_paciente_rec());
+        values.put("fk_farm", "");              //Corrigir!!!!!!!!
+        values.put("fk_med", "");
+
+       banco.insertOrThrow("receita",null,values);
+    }
+
+    //Método para obter o login dos pacientes
     public Object[] obterLoginPaciente(String cpf){
         Object[] objeto = new Object[1];
 
@@ -90,6 +111,8 @@ public class ClasseDAO {
         }
         return objeto;
     }
+
+    //Método para obter o login dos médicos
     public Object[] obterLoginMedico(String crm){
         Object[] objeto = new Object[1];
 
@@ -101,6 +124,7 @@ public class ClasseDAO {
         return objeto;
     }
 
+    //Método para obter o login do farmacêutico
     public Object[] obterLoginFarmaceutico(String crf){
         Object[] objeto = new Object[1];
         String busca = "select farm_senha from farmaceutico where crf =" + "'" + crf + "'";
@@ -112,6 +136,7 @@ public class ClasseDAO {
         return objeto;
     }
 
+    //Método para obter a senha do adm
     public Object[] obterLoginAdm(String nome){
         Object[] objeto = new Object[1];
 
@@ -124,7 +149,21 @@ public class ClasseDAO {
 
         return objeto;
     }
+    //Método para o cpf do paciente
+    public String retornaCPF(String cpf){
+        String teste="";
+        String busca ="select cpf from paciente where cpf=" + "'" + cpf + "'";
+        Cursor cursor = banco.rawQuery(busca,null);
+        while(cursor.moveToNext()){
+            teste = cursor.getString(cursor.getColumnIndex("cpf"));
+        }
+        return  teste;
+    }
 
+
+
+
+    //Método para obter a lista de farmacêuticos
     public List<Farmaceutico> obterListaFarmaceutico(){
         ArrayList<Farmaceutico> farmaceuticos = new ArrayList<>();
         Cursor cursor = banco.query("farmaceutico", new String[]{"crf","farm_nome"},null,null,null,null,null);
@@ -137,6 +176,7 @@ public class ClasseDAO {
 
         return farmaceuticos;
     }
+    //Método para obter a lista de médicos
     public List<Medico> obterListaMedico(){
         ArrayList<Medico> medicos = new ArrayList<>();
         Cursor cursor = banco.query("medico", new String[]{"crm", "med_nome"},null,null,null,null,null);
@@ -150,19 +190,7 @@ public class ClasseDAO {
         return medicos;
     }
 
-//    public List<paciente> obterPaciente(){
-//        ArrayList<Paciente> pacientes = new ArrayList<>();
-//        Cursor cursor = banco.query("paciente", new String[]{"cpf","paciente_nome","paciente_senha"}, null,null,null,null,null);
-//        while(cursor.moveToNext()){
-//            Paciente p = new Paciente();
-//            p.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
-//            p.setNome(cursor.getString(cursor.getColumnIndex("paciente_nome")));
-//            p.setSenha(cursor.getString(cursor.getColumnIndex("paciente_senha")));
-//
-//            pacientes.add(p);
-//        }
-//        return pacientes;
-    //}
+
 
 //    public void excluirPaciente(Paciente p){
 //        banco.delete("paciente", "id = ?", new String []{p.getCpf().toString()});
