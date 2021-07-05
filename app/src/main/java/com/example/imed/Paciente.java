@@ -1,5 +1,7 @@
 package com.example.imed;
 
+import com.example.imed.Usuario;
+
 public class Paciente extends Usuario {
 
     String cpf;

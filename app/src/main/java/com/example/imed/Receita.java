@@ -1,12 +1,12 @@
 package com.example.imed;
 
 public class Receita {
-    int idReceita;
-    String nome_remedio,horario,dosagem,instrucoes, fk_paciente_rec,fk_farm,fk_med;
+
+    String idReceita, nome_remedio,horario,dosagem,instrucoes, fk_paciente_rec,fk_farm,fk_med;
 
     public void setFk_paciente_rec(String fk_paciente_rec) { this.fk_paciente_rec = fk_paciente_rec; }
 
-    public void setIdReceita(int idReceita) {
+    public void setIdReceita(String idReceita) {
         this.idReceita = idReceita;
     }
 
@@ -30,7 +30,7 @@ public class Receita {
 
     public void setFk_med(String fk_med) { this.fk_med = fk_med; }
 
-    public int getIdReceita() {
+    public String getIdReceita() {
         return idReceita;
     }
 

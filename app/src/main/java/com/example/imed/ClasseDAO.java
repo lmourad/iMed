@@ -1,16 +1,11 @@
 package com.example.imed;
 
-import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -213,10 +208,11 @@ public class ClasseDAO {
 
     public List<Receita> obterListaReceita(){
         ArrayList<Receita> receitas = new ArrayList<>();
-        Cursor cursor = banco.query("receita", new String[]{"nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med"},null,null,null,null,null);
+        Cursor cursor = banco.query("receita", new String[]{"idReceita","nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med"},null,null,null,null,null);
 
         while(cursor.moveToNext()){
             Receita r = new Receita();
+            r.setIdReceita(cursor.getString(cursor.getColumnIndex("idReceita")));
             r.setNome_remedio(cursor.getString(cursor.getColumnIndex("nome_remedio")));
             r.setDosagem(cursor.getString(cursor.getColumnIndex("dosagem")));
             r.setHorario(cursor.getString(cursor.getColumnIndex("horario")));

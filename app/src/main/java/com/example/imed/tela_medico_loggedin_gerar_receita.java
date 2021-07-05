@@ -56,7 +56,7 @@ public class tela_medico_loggedin_gerar_receita extends AppCompatActivity {
                 try {
                     int idReceita = random.nextInt(5000) + 1000;
 
-                    receita.setIdReceita(idReceita);
+                    receita.setIdReceita(idReceita+"");
                     receita.setDosagem(textView_dosagem.getText().toString());
                     receita.setHorario(textView_nome_horario.getText().toString());
                     receita.setNome_remedio(textView_nome_remedio.getText().toString());
@@ -88,7 +88,7 @@ public class tela_medico_loggedin_gerar_receita extends AppCompatActivity {
                 catch (SQLiteConstraintException e){
                     int idReceita = random.nextInt(5000) + 1000;
 
-                    receita.setIdReceita(idReceita);
+                    receita.setIdReceita(idReceita+"");
                     receita.setDosagem(textView_dosagem.getText().toString());
                     receita.setHorario(textView_nome_horario.getText().toString());
                     receita.setNome_remedio(textView_nome_remedio.getText().toString());
