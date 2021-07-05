@@ -1,3 +1,4 @@
+
 package com.example.imed;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +25,18 @@ public class tela_medico_loggedin_gerar_receita extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         Random random = new Random();
         ClasseDAO dao = new ClasseDAO(this  );
         Receita receita = new Receita();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_medico_loggedin_gerar_receita);
+
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("MedicoCrm");
+
+
 
         //==========================================================//
         imageButton_go_back_tela_medico_loggedin = findViewById(R.id.imageButton_go_back_tela_medico_loggedin);
@@ -42,10 +49,10 @@ public class tela_medico_loggedin_gerar_receita extends AppCompatActivity {
         textView_cpf_do_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
         //==========================================================//
 
+
         button_gerar_receita_med.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
                     int idReceita = random.nextInt(5000) + 1000;
 
@@ -55,6 +62,7 @@ public class tela_medico_loggedin_gerar_receita extends AppCompatActivity {
                     receita.setNome_remedio(textView_nome_remedio.getText().toString());
                     receita.setInstrucoes(textView_instrucoes.getText().toString());
                     receita.setFk_paciente_rec(textView_cpf_do_paciente.getText().toString());
+                    receita.setFk_med(valor);
 
                     if(textView_nome_remedio.getText().toString().equals("") || textView_cpf_do_paciente.getText().toString().equals("") ||
                             textView_dosagem.getText().toString().equals("") || textView_nome_horario.getText().toString().equals("") ||
@@ -86,6 +94,7 @@ public class tela_medico_loggedin_gerar_receita extends AppCompatActivity {
                     receita.setNome_remedio(textView_nome_remedio.getText().toString());
                     receita.setInstrucoes(textView_instrucoes.getText().toString());
                     receita.setFk_paciente_rec(textView_cpf_do_paciente.getText().toString());
+                    receita.setFk_med(valor);
 
                     if(textView_nome_remedio.getText().toString().equals("") || textView_cpf_do_paciente.getText().toString().equals("") ||
                             textView_dosagem.getText().toString().equals("") || textView_nome_horario.getText().toString().equals("") ||

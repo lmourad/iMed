@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -17,6 +18,11 @@ public class tela_medico_loggedin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_medico_loggedin);
+
+
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("MedicoCrm");
+
 
         //=================================================//
 
@@ -50,6 +56,7 @@ public class tela_medico_loggedin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_medico_loggedin.this, tela_medico_loggedin_gerar_receita.class);
+                intent.putExtra("MedicoCrm",valor);
                 startActivity(intent);
             }
         });

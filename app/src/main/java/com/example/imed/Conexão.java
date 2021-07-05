@@ -50,7 +50,7 @@ public class Conexão extends SQLiteOpenHelper {
                 "dosagem varchar(15) not null," +
                 "instrucoes varchar(50)not null," +
                 "fk_paciente_rec varchar(11) not null," +
-                "fk_farm varchar(20) not null," +
+                "fk_farm varchar(20)," +
                 "fk_med varchar(20) not null," +
                 "foreign key(fk_paciente_rec) references paciente(cpf)," +
                 "foreign key(fk_farm) references farmaceutico(crf)," +

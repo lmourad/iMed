@@ -95,7 +95,7 @@ public class ClasseDAO {
 
         values.put("fk_paciente_rec", receita.getFk_paciente_rec());
         values.put("fk_farm", "");              //Corrigir!!!!!!!!
-        values.put("fk_med", "");
+        values.put("fk_med", receita.getFk_med());
 
        banco.insertOrThrow("receita",null,values);
     }
@@ -151,15 +151,36 @@ public class ClasseDAO {
     }
     //Método para o cpf do paciente
     public String retornaCPF(String cpf){
-        String teste="";
+        String retornaCpf="";
         String busca ="select cpf from paciente where cpf=" + "'" + cpf + "'";
         Cursor cursor = banco.rawQuery(busca,null);
         while(cursor.moveToNext()){
-            teste = cursor.getString(cursor.getColumnIndex("cpf"));
+            retornaCpf = cursor.getString(cursor.getColumnIndex("cpf"));
         }
-        return  teste;
+        return  retornaCpf;
     }
 
+//    //Método para o crm do médico
+//    public String retornaCRM(String crm){
+//        String retornaCrm = "";
+//        String busca = "select crm from medico where crm = '" +crm + "'";
+//        Cursor cursor = banco.rawQuery(busca, null);
+//        while(cursor.moveToNext()){
+//            retornaCrm = cursor.getString(cursor.getColumnIndex("crm"));
+//        }
+//        return retornaCrm;
+//    }
+
+    //Método para o crf do farmacêutico
+    public String retornCRF(String crf){
+        String retornaCrf = "";
+        String busca = "select crf from farmaceutico where crf = '" +crf+"'";
+        Cursor cursor = banco.rawQuery(busca,null);
+        while(cursor.moveToNext()){
+            retornaCrf=cursor.getString(cursor.getColumnIndex("crf"));
+        }
+        return retornaCrf;
+    }
 
 
 
@@ -188,6 +209,22 @@ public class ClasseDAO {
             medicos.add(m);
         }
         return medicos;
+    }
+
+    public List<Receita> obterListaReceita(){
+        ArrayList<Receita> receitas = new ArrayList<>();
+        Cursor cursor = banco.query("receita", new String[]{"nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med"},null,null,null,null,null);
+
+        while(cursor.moveToNext()){
+            Receita r = new Receita();
+            r.setNome_remedio(cursor.getString(cursor.getColumnIndex("nome_remedio")));
+            r.setDosagem(cursor.getString(cursor.getColumnIndex("dosagem")));
+            r.setHorario(cursor.getString(cursor.getColumnIndex("horario")));
+            r.setInstrucoes(cursor.getString(cursor.getColumnIndex("instrucoes")));
+            r.setFk_med(cursor.getString(cursor.getColumnIndex("fk_med")));
+            receitas.add(r);
+        }
+        return receitas;
     }
 
 

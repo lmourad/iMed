@@ -55,8 +55,8 @@ public class tela_login_screen_medico extends AppCompatActivity {
                 try{
                     if(dao.obterLoginMedico(textField_tela_login_screen_medico_crm.getText().toString())[0].toString().equals(textPassword_tela_login_screen_medico.getText().toString())){
                         Toast.makeText(tela_login_screen_medico.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
-
                         Intent intent = new Intent(tela_login_screen_medico.this, tela_medico_loggedin.class);
+                        intent.putExtra("MedicoCrm", textField_tela_login_screen_medico_crm.getText().toString());
                         startActivity(intent);
                     }
                     else{

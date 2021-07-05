@@ -59,4 +59,11 @@ public class Receita {
     public String getFk_med() {
         return fk_med;
     }
+
+    @Override
+    public String toString(){
+        return"Id da receita: " + getIdReceita() +  "\nNome do Remédio: " + getNome_remedio() + "\nDosagem: " + getDosagem() +
+                "\nHorário: "+ getHorario() + "\nInstruções: "+ getInstrucoes() +
+                "\nCrm médico: " + getFk_med();
+    }
 }
