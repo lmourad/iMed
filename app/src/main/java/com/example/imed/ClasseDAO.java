@@ -87,12 +87,15 @@ public class ClasseDAO {
         values.put("horario", receita.getHorario());
         values.put("dosagem", receita.getDosagem());
         values.put("instrucoes", receita.getInstrucoes());
-
         values.put("fk_paciente_rec", receita.getFk_paciente_rec());
-        values.put("fk_farm", "");              //Corrigir!!!!!!!!
         values.put("fk_med", receita.getFk_med());
+        values.put("fk_farm", "");
+        banco.insertOrThrow("receita",null,values);
+    }
 
-       banco.insertOrThrow("receita",null,values);
+    // Método para atualizar os dados da tabela receita
+    public void inserirFkFarm(String fkFarm, int id){
+        banco.execSQL("UPDATE "+"receita"+" SET fk_farm = "+"'"+fkFarm+"' "+ "WHERE idReceita = "+"'"+id+"'");
     }
 
     //Método para obter o login dos pacientes
@@ -155,17 +158,6 @@ public class ClasseDAO {
         return  retornaCpf;
     }
 
-    //Método para o crf do farmacêutico
-    public String retornCRF(String crf){
-        String retornaCrf = "";
-        String busca = "select crf from farmaceutico where crf = '" +crf+"'";
-        Cursor cursor = banco.rawQuery(busca,null);
-        while(cursor.moveToNext()){
-            retornaCrf=cursor.getString(cursor.getColumnIndex("crf"));
-        }
-        return retornaCrf;
-    }
-
     //Método para obter a lista de farmacêuticos
     public List<Farmaceutico> obterListaFarmaceutico(){
         ArrayList<Farmaceutico> farmaceuticos = new ArrayList<>();
@@ -226,11 +218,6 @@ public class ClasseDAO {
         }
         return medicamentos;
     }
-
-    public void excluirPaciente(Paciente p){
-        banco.delete("paciente", "id = ?", new String []{p.getCpf().toString()});
-    }
-
 
 
 }

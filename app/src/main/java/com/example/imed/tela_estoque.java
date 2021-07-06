@@ -20,7 +20,7 @@ public class tela_estoque extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);

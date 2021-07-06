@@ -58,6 +58,7 @@ public class tela_farmaceutico_loggedin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_loggedin.this, tela_farmaceutico_loggedin_verifica_receita.class);
+                intent.putExtra("FarmCrf", valor);
                 startActivity(intent);
             }
         });

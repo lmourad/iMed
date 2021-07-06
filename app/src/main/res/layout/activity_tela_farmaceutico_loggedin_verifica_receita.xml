@@ -8,7 +8,7 @@
     tools:context=".tela_farmaceutico_loggedin_verifica_receita">
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/button_verificar"
         android:layout_width="128dp"
         android:layout_height="55dp"
         android:text="VERIFICAR"
@@ -23,12 +23,12 @@
         app:layout_constraintVertical_bias="0.775" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editText_verifica_receita"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Receita:"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textColorHint="@color/principal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
