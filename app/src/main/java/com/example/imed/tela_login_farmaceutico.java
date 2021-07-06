@@ -53,7 +53,9 @@ public class tela_login_farmaceutico extends AppCompatActivity {
                         Toast.makeText(tela_login_farmaceutico.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(tela_login_farmaceutico.this, tela_farmaceutico_loggedin.class);
+                        intent.putExtra("FarmCrf", textView_tela_login_farmaceutico_crf.getText().toString());
                         startActivity(intent);
+
                     }
                     else{
                         Toast.makeText(tela_login_farmaceutico.this, "Dados incorretos!", Toast.LENGTH_SHORT).show();

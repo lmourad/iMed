@@ -18,6 +18,9 @@ public class tela_adm_loggedin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adm_loggedin);
 
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("ContaAdm");
+
         //==================================================//
 
         imageButton_go_to_delete_account_screen = findViewById(R.id.imageButton_go_to_delete_account_screen);
@@ -42,6 +45,7 @@ public class tela_adm_loggedin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_loggedin.this, tela_create_account_adm.class);
+                intent.putExtra("ContaAdm", valor);
                 startActivity(intent);
             }
         });

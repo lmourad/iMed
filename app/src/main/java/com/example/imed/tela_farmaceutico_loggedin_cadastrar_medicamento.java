@@ -18,7 +18,7 @@ public class tela_farmaceutico_loggedin_cadastrar_medicamento extends AppCompatA
 
     private ImageButton imageButton_tela_cadastrar_medicamento_back;
     private Button Button_cadastrar_medicamentos;
-    private EditText editText_catmat,editText_pr_ativo,editText_concentracao,editText_forma_farm,editText_fornecimento;
+    private EditText editText_catmat,editText_pr_ativo,editText_concentracao,editText_forma_farm,editText_fornecimento,editText_nome_medicamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,9 @@ public class tela_farmaceutico_loggedin_cadastrar_medicamento extends AppCompatA
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_farmaceutico_loggedin_cadastrar_medicamento);
+
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("FarmCrf");
 
 
         imageButton_tela_cadastrar_medicamento_back = findViewById(R.id.imageButton_tela_cadastrar_medicamento_back);
@@ -47,6 +50,7 @@ public class tela_farmaceutico_loggedin_cadastrar_medicamento extends AppCompatA
         editText_concentracao = findViewById(R.id.editText_concentracao);
         editText_forma_farm = findViewById(R.id.editText_forma_farm);
         editText_fornecimento = findViewById(R.id.editText_fornecimento);
+        editText_nome_medicamento = findViewById(R.id.editText_nome_medicamento);
 
 
 
@@ -61,8 +65,17 @@ public class tela_farmaceutico_loggedin_cadastrar_medicamento extends AppCompatA
                     medicamentos.setPr_ativo(editText_pr_ativo.getText().toString());
                     medicamentos.setForma_farm(editText_forma_farm.getText().toString());
                     medicamentos.setFornecimento(editText_fornecimento.getText().toString());
+                    medicamentos.setNome_medicamento(editText_nome_medicamento.getText().toString());
+                    medicamentos.setFk_crf_farm(valor);
 
                     dao.inserirMedicamentos(medicamentos);
+
+                    editText_catmat.setText("");
+                    editText_nome_medicamento.setText("");
+                    editText_pr_ativo.setText("");
+                    editText_concentracao.setText("");
+                    editText_forma_farm.setText("");
+                    editText_fornecimento.setText("");
 
                 }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_farmaceutico_loggedin_cadastrar_medicamento.this, "Esse medicamento já está cadastrado", Toast.LENGTH_SHORT).show();

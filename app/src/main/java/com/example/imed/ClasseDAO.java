@@ -45,7 +45,7 @@ public class ClasseDAO {
         values.put("crm", medico.getCrm());
         values.put("med_nome", medico.getNome());
         values.put("med_senha", medico.getSenha());
-        values.put("fk_adm_med", "adm");
+        values.put("fk_adm_med", medico.getFk_adm_med());
         banco.insertOrThrow("medico",null,values);
     }
 
@@ -55,9 +55,7 @@ public class ClasseDAO {
         values.put("crf", farmaceutico.getCrf());
         values.put("farm_nome",farmaceutico.getNome());
         values.put("farm_senha", farmaceutico.getSenha());
-
-
-        values.put("fk_adm_farm", "adm");///Corrigir!!!!
+        values.put("fk_adm_farm", farmaceutico.getFk_adm_farm());
 
         banco.insertOrThrow("farmaceutico",null,values);
     }
@@ -66,15 +64,17 @@ public class ClasseDAO {
     public void inserirMedicamentos(Medicamentos medicamentos){
         ContentValues values = new ContentValues();
         values.put("catmat", medicamentos.getCatmat());
+        values.put("nome_medicamento", medicamentos.getNome_medicamento());
         values.put("pr_ativo", medicamentos.getPr_ativo());
         values.put("concentracao", medicamentos.getConcentracao());
         values.put("fornecimento", medicamentos.getFornecimento());
         values.put("forma_farm",medicamentos.getForma_farm());
-
+        values.put("fk_crf_farm", medicamentos.getFk_crf_farm());
         values.put("quantidade", 1);
+
+
         values.put("fk_idReceita", 1);
         values.put("fk_crm_med", ""); ///Corrigir!!!!
-        values.put("fk_crf_farm","");
 
         banco.insertOrThrow("medicamento", null, values);
     }
@@ -155,17 +155,6 @@ public class ClasseDAO {
         return  retornaCpf;
     }
 
-//    //Método para o crm do médico
-//    public String retornaCRM(String crm){
-//        String retornaCrm = "";
-//        String busca = "select crm from medico where crm = '" +crm + "'";
-//        Cursor cursor = banco.rawQuery(busca, null);
-//        while(cursor.moveToNext()){
-//            retornaCrm = cursor.getString(cursor.getColumnIndex("crm"));
-//        }
-//        return retornaCrm;
-//    }
-
     //Método para o crf do farmacêutico
     public String retornCRF(String crf){
         String retornaCrf = "";
@@ -176,8 +165,6 @@ public class ClasseDAO {
         }
         return retornaCrf;
     }
-
-
 
     //Método para obter a lista de farmacêuticos
     public List<Farmaceutico> obterListaFarmaceutico(){
@@ -205,10 +192,10 @@ public class ClasseDAO {
         }
         return medicos;
     }
-
+    //Método para obter a lista de receitas
     public List<Receita> obterListaReceita(){
         ArrayList<Receita> receitas = new ArrayList<>();
-        Cursor cursor = banco.query("receita", new String[]{"idReceita","nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med"},null,null,null,null,null);
+        Cursor cursor = banco.query("receita", new String[]{"idReceita","nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med",},null,null,null,null,null);
 
         while(cursor.moveToNext()){
             Receita r = new Receita();
@@ -223,11 +210,26 @@ public class ClasseDAO {
         return receitas;
     }
 
+    //Método para obter a lista de medicamentos
+    public List<Medicamentos> obterListaMedicamentos(){
+        ArrayList<Medicamentos> medicamentos = new ArrayList<>();
+        Cursor cursor = banco.query("medicamento", new String[]{"catmat","nome_medicamento","pr_ativo","concentracao","fornecimento","forma_farm"},null,null,null,null,null );
+        while (cursor.moveToNext()) {
+            Medicamentos me = new Medicamentos();
+            me.setNome_medicamento(cursor.getString(cursor.getColumnIndex("nome_medicamento")));
+            me.setCatmat(cursor.getString(cursor.getColumnIndex("catmat")));
+            me.setPr_ativo(cursor.getString(cursor.getColumnIndex("pr_ativo")));
+            me.setConcentracao(cursor.getString(cursor.getColumnIndex("concentracao")));
+            me.setFornecimento(cursor.getString(cursor.getColumnIndex("fornecimento")));
+            me.setForma_farm(cursor.getString(cursor.getColumnIndex("forma_farm")));
+            medicamentos.add(me);
+        }
+        return medicamentos;
+    }
 
-
-//    public void excluirPaciente(Paciente p){
-//        banco.delete("paciente", "id = ?", new String []{p.getCpf().toString()});
-//    }
+    public void excluirPaciente(Paciente p){
+        banco.delete("paciente", "id = ?", new String []{p.getCpf().toString()});
+    }
 
 
 

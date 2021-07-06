@@ -18,8 +18,6 @@ public class tela_paciente_loggedin_minhas_receitas extends AppCompatActivity {
 
     private List<Receita> receitas;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

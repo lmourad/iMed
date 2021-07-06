@@ -21,6 +21,10 @@ public class tela_farmaceutico_loggedin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_farmaceutico_loggedin);
 
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("FarmCrf");
+
+
         //============================================================//
 
         imageButton_farmaceutico_go_to_estoque = findViewById(R.id.imageButton_farmaceutico_go_to_estoque);
@@ -44,6 +48,7 @@ public class tela_farmaceutico_loggedin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_loggedin.this, tela_farmaceutico_loggedin_cadastrar_medicamento.class);
+                intent.putExtra("FarmCrf", valor);
                 startActivity(intent);
             }
         });

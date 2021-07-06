@@ -33,11 +33,14 @@ public class tela_create_account_adm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_create_account_adm);
+
+        Intent intent = getIntent();
+        String valor  = intent.getStringExtra("ContaAdm");
+
 
         imageButton_tela_create_account_adm_back = findViewById(R.id.imageButton_tela_create_account_adm_back);
 
@@ -97,6 +100,7 @@ public class tela_create_account_adm extends AppCompatActivity {
                         farmaceutico.setNome(textView_nome_farm_med.getText().toString());
                         farmaceutico.setCrf(textView_crm_crf.getText().toString());
                         farmaceutico.setSenha(textView_senha_farm_med.getText().toString());
+                        farmaceutico.setFk_adm_farm(valor);
                         if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("") || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
                             Toast.makeText(tela_create_account_adm.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
                         }
@@ -117,7 +121,7 @@ public class tela_create_account_adm extends AppCompatActivity {
                         medico.setNome(textView_nome_farm_med.getText().toString());
                         medico.setCrm(textView_crm_crf.getText().toString());
                         medico.setSenha(textView_senha_farm_med.getText().toString());
-
+                        medico.setFk_adm_med(valor);
                         if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("") || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
                             Toast.makeText(tela_create_account_adm.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
                         }

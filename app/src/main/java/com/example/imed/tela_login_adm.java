@@ -46,7 +46,9 @@ public class tela_login_adm extends AppCompatActivity {
 
                     if(dao.obterLoginAdm(textNumber_tela_login_screen_adm_login.getText().toString())[0].toString().equals(textPassword_tela_login_screen_adm.getText().toString())){
                         Toast.makeText(tela_login_adm.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(tela_login_adm.this, tela_adm_loggedin.class);
+                        intent.putExtra("ContaAdm", textNumber_tela_login_screen_adm_login.getText().toString());
                         startActivity(intent);
                     }else{
                         Toast.makeText(tela_login_adm.this, "Dados incorretos!", Toast.LENGTH_SHORT).show();

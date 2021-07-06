@@ -57,6 +57,7 @@ public class Conexão extends SQLiteOpenHelper {
                 "foreign key(fk_med) references medico(crm))");
 
         db.execSQL("create table medicamento(catmat varchar(45) primary key not null," +
+                "nome_medicamento varchar(30),"+
                 "concentracao varchar(45) not null," +
                 "pr_ativo varchar(45) not null, " +
                 "fornecimento varchar(45) not null," +
