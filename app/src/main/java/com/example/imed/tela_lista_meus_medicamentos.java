@@ -14,7 +14,7 @@ public class tela_lista_meus_medicamentos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_lista_meus_medicamentos);
+        setContentView(R.layout.activity_tela_zlista_meus_medicamentos);
 
 
         imageButton_go_back_lista_medicamentos_to_meus_medicamentos = findViewById(R.id.imageButton_go_back_lista_medicamentos_to_meus_medicamentos);
@@ -23,7 +23,7 @@ public class tela_lista_meus_medicamentos extends AppCompatActivity {
         imageButton_go_back_lista_medicamentos_to_meus_medicamentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(tela_lista_meus_medicamentos.this, tela_paciente_meus_medicamentos.class);
+                Intent intent = new Intent(tela_lista_meus_medicamentos.this, tela_zexcluir_paciente_meus_medicamentos.class);
                 startActivity(intent);
             }
         });
