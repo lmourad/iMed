@@ -77,6 +77,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                             dao.gerarReceita(receita);
                             Toast.makeText(tela_medico_gerar_receita.this, "Receita criada com sucesso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(tela_medico_gerar_receita.this, tela_medico_inicio.class);
+                            intent.putExtra("MedicoCrm",valor);
                             startActivity(intent);
                         }
                         else{
@@ -109,6 +110,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                             dao.gerarReceita(receita);
                             Toast.makeText(tela_medico_gerar_receita.this, "Receita criada com sucesso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(tela_medico_gerar_receita.this, tela_medico_inicio.class);
+                            intent.putExtra("MedicoCrm",valor);
                             startActivity(intent);
                         }
                         else{
@@ -128,6 +130,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_medico_gerar_receita.this, tela_medico_inicio.class);
+                intent.putExtra("MedicoCrm",valor);
                 startActivity(intent);
             }
         });

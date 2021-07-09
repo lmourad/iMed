@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -28,7 +29,6 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
     Button button_criar_conta;
     TextView textView_nome_farm_med, textView_crm_crf, textView_senha_farm_med, textView_repetir_senha_farm_med;
 
-
         // Método criado para ir para a tela anterior
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
         String valor  = intent.getStringExtra("ContaAdm");
 
 
+
         imageButton_tela_create_account_adm_back = findViewById(R.id.imageButton_tela_create_account_adm_back);
 
         imageButton_tela_create_account_adm_back.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +53,7 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
             }
 
         });
-        // Fim do para ir para a tela anterior
+        // Fim do método para ir para a tela anterior
 
 
         // Método criado para selecionar apenas um dos radioButtons
@@ -109,8 +110,9 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
                             dao.inserirFarmaceutico(farmaceutico);
 
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
-                            startActivity(intent);
+                            Intent intentAux = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
+                            intentAux.putExtra("ContaAdm", valor);
+                            startActivity(intentAux);
 
                         }
                         else{
@@ -130,14 +132,17 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
                             dao.inserirMedico(medico);
 
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
-                            startActivity(intent);
+                            Intent intentAux = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
+                            intentAux.putExtra("ContaAdm", valor);
+                            startActivity(intentAux);
                         }
                         else{
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }catch (SQLiteConstraintException e){
+                    Log.i("aqui", e.toString());
+                    Log.i("aqui",""+ valor);
                     Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Esse CRM/CRF já foi cadastrado!", Toast.LENGTH_SHORT).show();
                 }
             }

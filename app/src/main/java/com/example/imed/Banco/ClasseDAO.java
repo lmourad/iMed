@@ -28,7 +28,6 @@ public class ClasseDAO {
         }catch (Exception e){
             Toast.makeText(context, "Conexão com o banco falhou", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void abrir(){
@@ -153,6 +152,25 @@ public class ClasseDAO {
 
         return objeto;
     }
+
+    //Método para retornar receita para o farmacêutico
+
+    public Object[] obterReceita(String idReceita){
+        Object[] objeto = new Object[6];
+        String busca = "select idReceita, nome_remedio, horario, dosagem, instrucoes, fk_med from receita where idReceita = '"+ idReceita +"'";
+        Cursor cursor = banco.rawQuery(busca, null);
+
+        while (cursor.moveToNext()){
+            objeto[0] = cursor.getString(cursor.getColumnIndex("idReceita"));
+            objeto[1] = cursor.getString(cursor.getColumnIndex("nome_remedio"));
+            objeto[2] = cursor.getString(cursor.getColumnIndex("horario"));
+            objeto[3] = cursor.getString(cursor.getColumnIndex("dosagem"));
+            objeto[4] = cursor.getString(cursor.getColumnIndex("instrucoes"));
+            objeto[5] = cursor.getString(cursor.getColumnIndex("fk_med"));
+        }
+        return  objeto;
+    }
+
     //Método para o cpf do paciente
     public String retornaCPF(String cpf){
         String retornaCpf="";
@@ -162,6 +180,20 @@ public class ClasseDAO {
             retornaCpf = cursor.getString(cursor.getColumnIndex("cpf"));
         }
         return  retornaCpf;
+    }
+
+    //Método que retorna idReceita
+
+    public  String retornaIdReceita(String idReceita){
+        String retornaIdReceita = "";
+        String busca = "select idReceita from receita where idReceita= '" + idReceita+ "'";
+        Cursor cursor = banco.rawQuery(busca,null);
+
+        while (cursor.moveToNext()){
+            retornaIdReceita = cursor.getString(cursor.getColumnIndex("idReceita"));
+        }
+
+        return retornaIdReceita;
     }
 
     //Método para obter a lista de farmacêuticos
@@ -224,6 +256,10 @@ public class ClasseDAO {
         }
         return medicamentos;
     }
+
+
+
+
 
 
 }

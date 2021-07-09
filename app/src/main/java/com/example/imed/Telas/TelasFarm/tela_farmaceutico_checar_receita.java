@@ -28,7 +28,6 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
         Intent intent = getIntent();
         String valor = intent.getStringExtra("FarmCrf");
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_checar_receita);
 
@@ -42,6 +41,7 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(tela_farmaceutico_checar_receita.this, tela_farmaceutico_inicio.class);
+                intent.putExtra("FarmCrf", valor);
                 startActivity(intent);
             }
         });
@@ -51,11 +51,20 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     int id = Integer.parseInt(editText_verifica_receita.getText().toString());
-                    Log.i("aqui", "" + id);
-                    dao.inserirFkFarm(valor, id);
-                    Intent intent = new Intent(tela_farmaceutico_checar_receita.this, tela_farmaceutico_apresentacao_receita.class);
-                    startActivity(intent);
-                }catch (NumberFormatException e){
+                        if(editText_verifica_receita.getText().toString().equals(dao.retornaIdReceita(editText_verifica_receita.getText().toString()))){
+                            dao.inserirFkFarm(valor, id);
+
+                            Intent intent = new Intent(tela_farmaceutico_checar_receita.this, tela_farmaceutico_apresentacao_receita.class);
+                            intent.putExtra("receita", editText_verifica_receita.getText().toString());
+                            intent.putExtra("FarmCrf", valor);
+                            startActivity(intent);
+
+                            Toast.makeText(tela_farmaceutico_checar_receita.this, "Receita válida", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(tela_farmaceutico_checar_receita.this, "Dados incorretors/Receita ínvalida", Toast.LENGTH_SHORT).show();
+                        }
+                }catch (Exception e){
                     Toast.makeText(tela_farmaceutico_checar_receita.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
                 }
             }

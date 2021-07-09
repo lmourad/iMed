@@ -80,6 +80,9 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
                     editText_forma_farm.setText("");
                     editText_fornecimento.setText("");
 
+                    Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Medicamento cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this,tela_farmaceutico_inicio.class);
+                    intent.putExtra("FarmCrf",valor);
                 }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Esse medicamento já está cadastrado", Toast.LENGTH_SHORT).show();
                 }

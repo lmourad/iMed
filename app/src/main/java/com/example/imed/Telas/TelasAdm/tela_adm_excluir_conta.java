@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.SearchView;
 
 import com.example.imed.Banco.ClasseDAO;
 import com.example.imed.R;
@@ -27,13 +29,15 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
     ImageButton imageButton_tela_adm_delete_account_go_back, imageButton_tela_adm_loggedin_delete,imageButton_excluir,imageButton_update;
     RadioButton radioButton_farmaceutico_lista,radioButton_medico_lista;
     ListView ListaContas;
+    SearchView SearchView_contas;
 
 
     private List<Farmaceutico> farmaceuticos;
     private List<Medico> medicos;
     private View previousColor;
 
-
+    private ArrayAdapter<Farmaceutico> adapterFarmaceutico;
+    private ArrayAdapter<Medico> adapterMedico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +53,16 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
         radioButton_farmaceutico_lista = findViewById(R.id.radioButton_farmaceutico_lista);
         radioButton_medico_lista = findViewById(R.id.radioButton_medico_lista);
         ListaContas = findViewById(R.id.ListaContas);
+        SearchView_contas = findViewById(R.id.SearchView_contas);
         //==============================================//
 
         radioButton_farmaceutico_lista.setChecked(true);
 
         medicos = dao.obterListaMedico();
-        ArrayAdapter<Medico> adapterMedico = new ArrayAdapter<Medico>(this, android.R.layout.simple_list_item_1, medicos);
+        adapterMedico = new ArrayAdapter<Medico>(this, android.R.layout.simple_list_item_1, medicos);
 
         farmaceuticos = dao.obterListaFarmaceutico();
-        ArrayAdapter<Farmaceutico> adapterFarmaceutico = new ArrayAdapter<Farmaceutico>(this, android.R.layout.simple_list_item_1,farmaceuticos);
+        adapterFarmaceutico = new ArrayAdapter<Farmaceutico>(this, android.R.layout.simple_list_item_1,farmaceuticos);
         ListaContas.setAdapter(adapterFarmaceutico);
 
         radioButton_farmaceutico_lista.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +72,22 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                     radioButton_medico_lista.setChecked(false);
 
                     ListaContas.setAdapter(adapterFarmaceutico);
+
+                    SearchView_contas.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            tela_adm_excluir_conta.this.adapterFarmaceutico.getFilter().filter(query);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            tela_adm_excluir_conta.this.adapterFarmaceutico.getFilter().filter(newText);
+
+                            return false;
+                        }
+                    });
+
                 }
             }
         });
@@ -78,6 +99,21 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                     radioButton_farmaceutico_lista.setChecked(false);
 
                     ListaContas.setAdapter(adapterMedico);
+
+                    SearchView_contas.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            tela_adm_excluir_conta.this.adapterMedico.getFilter().filter(query);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            tela_adm_excluir_conta.this.adapterMedico.getFilter().filter(newText);
+                            return false;
+                        }
+                    });
+
                 }
             }
         });
@@ -99,6 +135,8 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
             });
 
         //==============================================//
+
+
 
 
 

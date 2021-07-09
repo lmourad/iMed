@@ -32,8 +32,6 @@ public class tela_adm_inicio extends AppCompatActivity {
         //================================================//
 
 
-
-
         imageButton_tela_adm_loggedin_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
