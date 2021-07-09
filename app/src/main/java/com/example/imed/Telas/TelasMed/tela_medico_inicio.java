@@ -18,7 +18,7 @@ public class tela_medico_inicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_medico_inicio);
+        setContentView(R.layout.tela_medico_inicio);
 
 
         Intent intent = getIntent();

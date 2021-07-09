@@ -26,7 +26,7 @@ public class tela_adm_login extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_adm_login);
+        setContentView(R.layout.tela_adm_login);
 
         textNumber_tela_login_screen_adm_login = findViewById(R.id.textNumber_tela_login_screen_adm_login);
         textPassword_tela_login_screen_adm = findViewById(R.id.textPassword_tela_login_screen_adm);

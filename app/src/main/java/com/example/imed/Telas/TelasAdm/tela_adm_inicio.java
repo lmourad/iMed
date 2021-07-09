@@ -18,7 +18,7 @@ public class tela_adm_inicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_adm_inicio);
+        setContentView(R.layout.tela_adm_inicio);
 
         Intent intent = getIntent();
         String valor = intent.getStringExtra("ContaAdm");

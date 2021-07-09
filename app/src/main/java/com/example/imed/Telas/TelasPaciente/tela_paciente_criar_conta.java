@@ -29,7 +29,7 @@ public class tela_paciente_criar_conta extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_paciente_criar_conta);
+        setContentView(R.layout.tela_paciente_criar_conta);
 
         imageButton_tela_create_account_login_paciente_back = findViewById(R.id.imageButton_tela_create_account_login_paciente_back);
         imageButton_tela_create_account_login_paciente_back.setOnClickListener(new View.OnClickListener() {

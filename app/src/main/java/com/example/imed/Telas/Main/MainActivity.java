@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
 
         button_paciente = findViewById(R.id.button_paciente);
         button_paciente.setOnClickListener(new View.OnClickListener() {

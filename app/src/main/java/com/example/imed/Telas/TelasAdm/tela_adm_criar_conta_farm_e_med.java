@@ -36,7 +36,7 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_adm_criar_conta_farm_e_med);
+        setContentView(R.layout.tela_adm_criar_conta_farm_e_med);
 
         Intent intent = getIntent();
         String valor  = intent.getStringExtra("ContaAdm");

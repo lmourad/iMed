@@ -28,7 +28,7 @@ public class tela_paciente_examinar_receita extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_paciente_examinar_receitas);
+        setContentView(R.layout.tela_paciente_examinar_receitas);
 
         imageButton_go_back_tela_paciente_loggedin = findViewById(R.id.imageButton_go_back_tela_paciente_loggedin);
         ListaReceitas = findViewById(R.id.ListaReceitas);

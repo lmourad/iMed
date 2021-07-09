@@ -28,7 +28,7 @@ public class tela_farmaceutico_estoque extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_farmaceutico_estoque);
+        setContentView(R.layout.tela_farmaceutico_estoque);
 
 
         ListaMedicamentos = findViewById(R.id.ListaMedicamentos);

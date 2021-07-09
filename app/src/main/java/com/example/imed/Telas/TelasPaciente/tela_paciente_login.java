@@ -27,7 +27,7 @@ public class tela_paciente_login extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_paciente_login);
+        setContentView(R.layout.tela_paciente_login);
 
         imageButton_tela_login_paciente_back = findViewById(R.id.imageButton_tela_login_paciente_back);
         imageButton_tela_login_paciente_back.setOnClickListener(new View.OnClickListener() {

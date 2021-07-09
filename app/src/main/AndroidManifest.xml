@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMed">
-        <activity android:name=".tela_lista_meus_medicamentos"></activity>
-        <activity android:name=".tela_zexcluir_paciente_meus_medicamentos" />
+        <activity android:name=".Telas.TelasFarm.tela_farmaceutico_apresentacao_receita"></activity>
         <activity android:name=".Telas.TelasPaciente.tela_paciente_examinar_receita" />
         <activity android:name=".Telas.TelasMed.tela_medico_gerar_receita" />
         <activity android:name=".Telas.TelasAdm.tela_adm_excluir_conta" />

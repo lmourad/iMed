@@ -41,7 +41,7 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_adm_excluir_conta);
+        setContentView(R.layout.tela_adm_excluir_conta);
 
         //==============================================//
         imageButton_tela_adm_delete_account_go_back = findViewById(R.id.imageButton_tela_adm_delete_account_go_back);

@@ -29,7 +29,7 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_farmaceutico_cadastrar_medicamento);
+        setContentView(R.layout.tela_farmaceutico_cadastrar_medicamento);
 
         Intent intent = getIntent();
         String valor = intent.getStringExtra("FarmCrf");

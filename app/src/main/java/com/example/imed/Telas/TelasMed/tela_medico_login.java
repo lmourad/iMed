@@ -27,7 +27,7 @@ public class tela_medico_login extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_medico_login);
+        setContentView(R.layout.tela_medico_login);
 
         //==========================================================================//
 

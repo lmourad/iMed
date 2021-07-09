@@ -34,7 +34,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
         Receita receita = new Receita();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_medico_gerar_receita);
+        setContentView(R.layout.tela_medico_gerar_receita);
 
         Intent intent = getIntent();
         String valor = intent.getStringExtra("MedicoCrm");

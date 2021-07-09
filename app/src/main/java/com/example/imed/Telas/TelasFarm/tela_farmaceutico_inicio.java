@@ -20,7 +20,7 @@ public class tela_farmaceutico_inicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_farmaceutico_inicio);
+        setContentView(R.layout.tela_farmaceutico_inicio);
 
         Intent intent = getIntent();
         String valor = intent.getStringExtra("FarmCrf");

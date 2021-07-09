@@ -28,7 +28,7 @@ public class tela_medico_estoque extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_medico_estoque);
+        setContentView(R.layout.tela_medico_estoque);
 
         imageButton_go_back_estoque_medico = findViewById(R.id.imageButton_go_back_estoque_medico);
 
