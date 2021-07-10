@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,22 +41,30 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this, tela_farmaceutico_inicio.class);
+                intent.putExtra("FarmCrf", valor);
                 startActivity(intent);
 
             }
 
         });
 
-
-
         editText_catmat = findViewById(R.id.editText_catmat);
+        editText_catmat.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         editText_pr_ativo = findViewById(R.id.editText_pr_ativo);
+        editText_pr_ativo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         editText_concentracao = findViewById(R.id.editText_concentracao);
+        editText_concentracao.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         editText_forma_farm = findViewById(R.id.editText_forma_farm);
+        editText_forma_farm.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         editText_fornecimento = findViewById(R.id.editText_fornecimento);
+        editText_fornecimento.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         editText_nome_medicamento = findViewById(R.id.editText_nome_medicamento);
-
-
+        editText_nome_medicamento.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
 
         Button_cadastrar_medicamentos = findViewById(R.id.Button_cadastrar_medicamentos);
         Button_cadastrar_medicamentos.setOnClickListener(new View.OnClickListener() {
@@ -71,18 +80,26 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
                     medicamentos.setNome_medicamento(editText_nome_medicamento.getText().toString());
                     medicamentos.setFk_crf_farm(valor);
 
-                    dao.inserirMedicamentos(medicamentos);
+                    if(editText_catmat.getText().toString().equals("") || editText_concentracao.getText().toString().equals("")
+                            || editText_pr_ativo.getText().toString().equals("") || editText_forma_farm.getText().toString().equals("")
+                            || editText_fornecimento.getText().toString().equals("")
+                            || editText_nome_medicamento.getText().toString().equals("")) {
+                        Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Há campos vazios", Toast.LENGTH_SHORT).show();
+                    }else{
 
-                    editText_catmat.setText("");
-                    editText_nome_medicamento.setText("");
-                    editText_pr_ativo.setText("");
-                    editText_concentracao.setText("");
-                    editText_forma_farm.setText("");
-                    editText_fornecimento.setText("");
+                        dao.inserirMedicamentos(medicamentos);
 
-                    Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Medicamento cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this,tela_farmaceutico_inicio.class);
-                    intent.putExtra("FarmCrf",valor);
+                        editText_catmat.setText("");
+                        editText_nome_medicamento.setText("");
+                        editText_pr_ativo.setText("");
+                        editText_concentracao.setText("");
+                        editText_forma_farm.setText("");
+                        editText_fornecimento.setText("");
+
+                        Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Medicamento cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this,tela_farmaceutico_inicio.class);
+                        intent.putExtra("FarmCrf",valor);
+                    }
                 }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Esse medicamento já está cadastrado", Toast.LENGTH_SHORT).show();
                 }

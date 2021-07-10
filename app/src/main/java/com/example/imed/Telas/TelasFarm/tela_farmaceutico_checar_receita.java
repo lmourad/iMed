@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,8 +33,10 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
         setContentView(R.layout.tela_farmaceutico_checar_receita);
 
         imageButton_tela_verifica_receita_back = findViewById(R.id.imageButton_tela_verifica_receita_back);
-        editText_verifica_receita = findViewById(R.id.editText_verifica_receita);
         button_verificar = findViewById(R.id.button_verificar);
+
+        editText_verifica_receita = findViewById(R.id.editText_verifica_receita);
+        editText_verifica_receita.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});
 
 
         imageButton_tela_verifica_receita_back.setOnClickListener(new View.OnClickListener() {

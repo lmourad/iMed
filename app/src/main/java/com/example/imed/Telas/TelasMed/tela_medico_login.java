@@ -31,12 +31,14 @@ public class tela_medico_login extends AppCompatActivity {
 
         //==========================================================================//
 
-        imgButton_back_tela_login_screen_medico = findViewById(R.id.imgButton_back_tela_login_screen_medico);
         textField_tela_login_screen_medico_crm = findViewById(R.id.textField_tela_login_screen_medico_crm);
         textField_tela_login_screen_medico_crm.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
-        textPassword_tela_login_screen_medico = findViewById(R.id.textPassword_tela_login_screen_medico);
-        button_tela_login_screen_medico_entrar = findViewById(R.id.button_tela_login_screen_medico_entrar);
 
+        textPassword_tela_login_screen_medico = findViewById(R.id.textPassword_tela_login_screen_medico);
+        textPassword_tela_login_screen_medico.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+
+        button_tela_login_screen_medico_entrar = findViewById(R.id.button_tela_login_screen_medico_entrar);
+        imgButton_back_tela_login_screen_medico = findViewById(R.id.imgButton_back_tela_login_screen_medico);
         //==========================================================================//
 
 

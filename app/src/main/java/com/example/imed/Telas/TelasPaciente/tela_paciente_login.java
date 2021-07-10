@@ -44,6 +44,8 @@ public class tela_paciente_login extends AppCompatActivity {
         textView_tela_login_paciente_cpf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
 
         textView_tela_login_paciente_senha = findViewById(R.id.textView_tela_login_paciente_senha);
+        textView_tela_login_paciente_senha.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+
 
         button_tela_paciente_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +54,12 @@ public class tela_paciente_login extends AppCompatActivity {
 
                     if(dao.obterLoginPaciente(textView_tela_login_paciente_cpf.getText().toString())[0].toString().equals(textView_tela_login_paciente_senha.getText().toString())){
 
+                        Toast.makeText(tela_paciente_login.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(tela_paciente_login.this, tela_paciente_inicio.class);
+                        intent.putExtra("PacienteCpf", textView_tela_login_paciente_cpf.getText().toString());
                         startActivity(intent);
 
-                        Toast.makeText(tela_paciente_login.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         Toast.makeText(tela_paciente_login.this, "Dados incorretos", Toast.LENGTH_SHORT).show();

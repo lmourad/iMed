@@ -55,6 +55,7 @@ public class tela_adm_inicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_inicio.this, tela_adm_excluir_conta.class);
+                intent.putExtra("ContaAdm", valor);
                 startActivity(intent);
             }
         });

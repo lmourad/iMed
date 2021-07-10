@@ -45,13 +45,16 @@ public class tela_paciente_criar_conta extends AppCompatActivity {
         ClasseDAO dao = new ClasseDAO(this);
 
         textView_nome_paciente = findViewById(R.id.textView_nome_paciente);
-        
+        textView_nome_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         textView_cpf_paciente = findViewById(R.id.textView_cpf_paciente);
         textView_cpf_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
         
         textView_senha_paciente = findViewById(R.id.textView_senha_paciente);
-        textView_repetir_senha_paciente = findViewById(R.id.textView_repetir_senha_paciente);
+        textView_senha_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
 
+        textView_repetir_senha_paciente = findViewById(R.id.textView_repetir_senha_paciente);
+        textView_repetir_senha_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
 
         Button_criar_conta_paciente = findViewById(R.id.Button_criar_conta_paciente);
         Button_criar_conta_paciente.setOnClickListener(new View.OnClickListener() {

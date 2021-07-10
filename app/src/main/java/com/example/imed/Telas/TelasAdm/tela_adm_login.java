@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -29,7 +30,10 @@ public class tela_adm_login extends AppCompatActivity {
         setContentView(R.layout.tela_adm_login);
 
         textNumber_tela_login_screen_adm_login = findViewById(R.id.textNumber_tela_login_screen_adm_login);
+        textNumber_tela_login_screen_adm_login.setFilters(new InputFilter[]{new InputFilter.LengthFilter(29)});
+
         textPassword_tela_login_screen_adm = findViewById(R.id.textPassword_tela_login_screen_adm);
+        textPassword_tela_login_screen_adm.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
 
 
         imgButton_back_tela_login_screen_adm = findViewById(R.id.imgButton_back_tela_login_screen_adm);

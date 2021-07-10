@@ -33,6 +33,9 @@ public class tela_farmaceutico_estoque extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_estoque);
 
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("FarmCrf");
+
         ListaMedicamentos = findViewById(R.id.ListaMedicamentos);
         medicamentos = dao.obterListaMedicamentos();
 
@@ -64,6 +67,7 @@ public class tela_farmaceutico_estoque extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_estoque.this, tela_farmaceutico_inicio.class);
+                intent.putExtra("FarmCrf", valor);
                 startActivity(intent);
             }
         });

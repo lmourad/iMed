@@ -49,6 +49,7 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
+                intent.putExtra("ContaAdm", valor);
                 startActivity(intent);
             }
 
@@ -85,12 +86,17 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
         button_criar_conta = findViewById(R.id.button_criar_conta);
 
         textView_nome_farm_med = findViewById(R.id.textView_nome_farm_med);
+        textView_nome_farm_med.setFilters(new InputFilter[]{new InputFilter.LengthFilter(29)});
 
         textView_crm_crf = findViewById(R.id.textView_crm_crf);
         textView_crm_crf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
 
         textView_senha_farm_med = findViewById(R.id.textView_senha_farm_med);
+        textView_senha_farm_med.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+
         textView_repetir_senha_farm_med = findViewById(R.id.textView_repetir_senha_farm_med);
+        textView_repetir_senha_farm_med.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+
 
 
         button_criar_conta.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +108,8 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
                         farmaceutico.setCrf(textView_crm_crf.getText().toString());
                         farmaceutico.setSenha(textView_senha_farm_med.getText().toString());
                         farmaceutico.setFk_adm_farm(valor);
-                        if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("") || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
+                        if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("")
+                                || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
                         }
                         else if (farmaceutico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString()) == true ){
@@ -110,9 +117,9 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
                             dao.inserirFarmaceutico(farmaceutico);
 
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
-                            Intent intentAux = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
-                            intentAux.putExtra("ContaAdm", valor);
-                            startActivity(intentAux);
+                            Intent intent = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
+                            intent.putExtra("ContaAdm", valor);
+                            startActivity(intent);
 
                         }
                         else{
@@ -124,7 +131,9 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
                         medico.setCrm(textView_crm_crf.getText().toString());
                         medico.setSenha(textView_senha_farm_med.getText().toString());
                         medico.setFk_adm_med(valor);
-                        if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("") || textView_senha_farm_med.getText().toString().equals("") || textView_repetir_senha_farm_med.getText().toString().equals("")){
+                        if(textView_nome_farm_med.getText().toString().equals("") || textView_crm_crf.getText().toString().equals("")
+                                || textView_senha_farm_med.getText().toString().equals("")
+                                || textView_repetir_senha_farm_med.getText().toString().equals("")){
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Há campos vazios!", Toast.LENGTH_SHORT).show();
                         }
                         else if(medico.getSenha().equals(textView_repetir_senha_farm_med.getText().toString())==true){
@@ -132,9 +141,9 @@ public class tela_adm_criar_conta_farm_e_med extends AppCompatActivity {
                             dao.inserirMedico(medico);
 
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Conta criada com sucesso!", Toast.LENGTH_SHORT).show();
-                            Intent intentAux = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
-                            intentAux.putExtra("ContaAdm", valor);
-                            startActivity(intentAux);
+                            Intent intent = new Intent(tela_adm_criar_conta_farm_e_med.this, tela_adm_inicio.class);
+                            intent.putExtra("ContaAdm", valor);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(tela_adm_criar_conta_farm_e_med.this, "Os campos das senhas não são iguais", Toast.LENGTH_SHORT).show();

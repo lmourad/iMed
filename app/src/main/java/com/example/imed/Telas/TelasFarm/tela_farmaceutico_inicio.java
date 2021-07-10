@@ -69,6 +69,7 @@ public class tela_farmaceutico_inicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_inicio.this, tela_farmaceutico_estoque.class);
+                intent.putExtra("FarmCrf", valor);
                 startActivity(intent);
             }
         });

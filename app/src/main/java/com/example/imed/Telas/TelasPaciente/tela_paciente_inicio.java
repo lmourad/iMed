@@ -19,6 +19,9 @@ public class tela_paciente_inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_paciente_inicio);
 
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("PacienteCpf");
+
         //========================================================================//
 
         imageButton_go_to_minhas_receitas_paciente = findViewById(R.id.imageButton_go_to_minhas_receitas_paciente);
@@ -41,6 +44,7 @@ public class tela_paciente_inicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_paciente_inicio.this, tela_paciente_examinar_receita.class);
+                intent.putExtra("PacienteCpf", valor);
                 startActivity(intent);
             }
         });

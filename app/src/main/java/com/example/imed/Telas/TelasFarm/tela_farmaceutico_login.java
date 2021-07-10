@@ -32,9 +32,8 @@ public class tela_farmaceutico_login extends AppCompatActivity {
         textView_tela_login_farmaceutico_crf = findViewById(R.id.textView_tela_login_farmaceutico_crf);
         textView_tela_login_farmaceutico_crf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
 
-
         textView_tela_login_farmaceutico_senha = findViewById(R.id.textView_tela_login_farmaceutico_senha);
-        tela_login_farmaceutico_entrar = findViewById(R.id.tela_login_farmaceutico_entrar);
+        textView_tela_login_farmaceutico_senha.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
 
 
         imageButton_back_tela_login_farmaceutico = findViewById(R.id.imageButton_back_tela_login_farmaceutico);
@@ -47,7 +46,7 @@ public class tela_farmaceutico_login extends AppCompatActivity {
         });
 
 
-
+        tela_login_farmaceutico_entrar = findViewById(R.id.tela_login_farmaceutico_entrar);
         tela_login_farmaceutico_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

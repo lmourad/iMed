@@ -33,7 +33,7 @@ public class tela_medico_estoque extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_medico_estoque);
 
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         String valor = intent.getStringExtra("MedicoCrm");
 
 
@@ -69,6 +69,7 @@ public class tela_medico_estoque extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_medico_estoque.this, tela_medico_inicio.class);
+                intent.putExtra("MedicoCrm",valor);
                 startActivity(intent);
             }
         });

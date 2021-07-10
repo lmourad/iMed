@@ -49,6 +49,7 @@ public class tela_medico_inicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_medico_inicio.this, tela_medico_estoque.class);
+                intent.putExtra("MedicoCrm",valor);
                 startActivity(intent);
             }
         });

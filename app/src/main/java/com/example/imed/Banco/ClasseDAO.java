@@ -22,12 +22,12 @@ public class ClasseDAO {
 
     public ClasseDAO(Context context) {
 
-        try {
+//        try {
             conexao = new Conexao(context);
             banco = conexao.getWritableDatabase();
-        }catch (Exception e){
-            Toast.makeText(context, "Conexão com o banco falhou", Toast.LENGTH_SHORT).show();
-        }
+//        }catch (Exception e){
+//            Toast.makeText(context, "Conexão com o banco falhou", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     public void abrir(){
@@ -223,9 +223,10 @@ public class ClasseDAO {
         return medicos;
     }
     //Método para obter a lista de receitas
-    public List<Receita> obterListaReceita(){
+    public List<Receita> obterListaReceita(String cpf){
         ArrayList<Receita> receitas = new ArrayList<>();
-        Cursor cursor = banco.query("receita", new String[]{"idReceita","nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med",},null,null,null,null,null);
+        Cursor cursor = banco.query("receita", new String[]{"idReceita","nome_remedio", "horario", "dosagem", "instrucoes" , "fk_med",}
+        ,"fk_paciente_rec = "+cpf,null,null,null,null);
 
         while(cursor.moveToNext()){
             Receita r = new Receita();
@@ -243,7 +244,9 @@ public class ClasseDAO {
     //Método para obter a lista de medicamentos
     public List<Medicamentos> obterListaMedicamentos(){
         ArrayList<Medicamentos> medicamentos = new ArrayList<>();
-        Cursor cursor = banco.query("medicamento", new String[]{"catmat","nome_medicamento","pr_ativo","concentracao","fornecimento","forma_farm"},null,null,null,null,null );
+        Cursor cursor = banco.query("medicamento", new String[]{"catmat","nome_medicamento","pr_ativo","concentracao","fornecimento","forma_farm"}
+        ,null,null,null,null,null );
+
         while (cursor.moveToNext()) {
             Medicamentos me = new Medicamentos();
             me.setNome_medicamento(cursor.getString(cursor.getColumnIndex("nome_medicamento")));
@@ -258,7 +261,15 @@ public class ClasseDAO {
     }
 
 
+    //método para deletar contas de médicos
+    public void deletarContaMedico(String m){
+        banco.delete("medico", "crm = ?", new String[]{m});
+    }
 
+    //método para deletar contas de farmacêuticos
+    public void deletarContaFarmaceutico(String f){
+        banco.delete("farmaceutico", "crf = ?", new String[]{f});
+    }
 
 
 

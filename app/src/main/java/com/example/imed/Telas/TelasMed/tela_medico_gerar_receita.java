@@ -44,10 +44,19 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
         //==========================================================//
         imageButton_go_back_tela_medico_loggedin = findViewById(R.id.imageButton_go_back_tela_medico_loggedin);
         button_gerar_receita_med = findViewById(R.id.button_gerar_receita_med);
+
         textView_nome_remedio = findViewById(R.id.textView_nome_remedio);
+        textView_nome_remedio.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         textView_dosagem = findViewById(R.id.textView_dosagem);
+        textView_dosagem.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         textView_nome_horario = findViewById(R.id.textView_nome_horario);
+        textView_nome_horario.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         textView_instrucoes = findViewById(R.id.textView_instrucoes);
+        textView_instrucoes.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+
         textView_cpf_do_paciente = findViewById(R.id.textView_cpf_do_paciente);
         textView_cpf_do_paciente.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
         //==========================================================//
@@ -57,7 +66,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    int idReceita = random.nextInt(5000) + 1000;
+                    int idReceita = random.nextInt(6000) + 1000;
 
                     receita.setIdReceita(idReceita+"");
                     receita.setDosagem(textView_dosagem.getText().toString());
