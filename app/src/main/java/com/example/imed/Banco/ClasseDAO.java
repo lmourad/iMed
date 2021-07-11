@@ -31,9 +31,7 @@ public class ClasseDAO {
 
     }
 
-    public void abrir(){
-
-    }
+    public void abrir(){ }
 
     //Método para cadastrar um paciente
     public void inserirPaciente(Paciente paciente){
@@ -62,11 +60,10 @@ public class ClasseDAO {
         values.put("farm_nome",farmaceutico.getNome());
         values.put("farm_senha", farmaceutico.getSenha());
         values.put("fk_adm_farm", farmaceutico.getFk_adm_farm());
-
         banco.insertOrThrow("farmaceutico",null,values);
     }
 
-    //Método para criar um cadastro de medicamentos
+    //Método para cadastrar um medicamento
     public void inserirMedicamentos(Medicamentos medicamentos){
         ContentValues values = new ContentValues();
         values.put("catmat", medicamentos.getCatmat());
@@ -78,11 +75,10 @@ public class ClasseDAO {
         values.put("fk_crf_farm", medicamentos.getFk_crf_farm());
         values.put("fk_crm_med", "");
         values.put("fk_idReceita", "");
-
         banco.insertOrThrow("medicamento", null, values);
     }
 
-    //Método para gerar receitas
+    //Método para gerar uma receita
     public void gerarReceita(Receita receita){
         ContentValues values = new ContentValues();
         values.put("idReceita",receita.getIdReceita());
@@ -97,10 +93,12 @@ public class ClasseDAO {
         banco.insertOrThrow("receita",null,values);
     }
 
+    // Método para atualizar os dados da tabela medicamento
     public void inserirFkIdReceita(int id, String nomeRemedio){
         banco.execSQL("UPDATE "+"medicamento"+" SET fk_idReceita = "+"'"+id+"' "+ "WHERE nome_medicamento = "+"'"+nomeRemedio+"'");
     }
 
+    // Método para atualizar os dados da tabela medicamento
     public void inserirFkCrmMed(String fkCrm, String nomeRemedio){
         banco.execSQL("UPDATE "+"medicamento"+" SET fk_crm_med = "+"'"+fkCrm+"' "+ "WHERE nome_medicamento = "+"'"+nomeRemedio+"'");
     }
@@ -134,7 +132,7 @@ public class ClasseDAO {
         return objeto;
     }
 
-    //Método para obter o login do farmacêutico
+    //Método para obter o login dos farmacêuticos
     public Object[] obterLoginFarmaceutico(String crf){
         Object[] objeto = new Object[1];
         String busca = "select farm_senha from farmaceutico where crf =" + "'" + crf + "'";
@@ -146,7 +144,7 @@ public class ClasseDAO {
         return objeto;
     }
 
-    //Método para obter a senha do adm
+    //Método para obter o login dos adms
     public Object[] obterLoginAdm(String nome){
         Object[] objeto = new Object[1];
 
@@ -161,7 +159,6 @@ public class ClasseDAO {
     }
 
     //Método para retornar receita para o farmacêutico
-
     public Object[] obterReceita(String idReceita){
         Object[] objeto = new Object[6];
         String busca = "select idReceita, nome_remedio, horario, dosagem, instrucoes, fk_med from receita where idReceita = '"+ idReceita +"'";
@@ -190,7 +187,6 @@ public class ClasseDAO {
     }
 
     //Método que retorna idReceita
-
     public  String retornaIdReceita(String idReceita){
         String retornaIdReceita = "";
         String busca = "select idReceita from receita where idReceita= '" + idReceita+ "'";
@@ -213,7 +209,6 @@ public class ClasseDAO {
             f.setNome(cursor.getString(cursor.getColumnIndex("farm_nome")));
             farmaceuticos.add(f);
         }
-
         return farmaceuticos;
     }
     //Método para obter a lista de médicos
