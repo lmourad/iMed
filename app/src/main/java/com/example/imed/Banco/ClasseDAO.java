@@ -22,12 +22,13 @@ public class ClasseDAO {
 
     public ClasseDAO(Context context) {
 
-//        try {
+        try {
             conexao = new Conexao(context);
             banco = conexao.getWritableDatabase();
-//        }catch (Exception e){
-//            Toast.makeText(context, "Conexão com o banco falhou", Toast.LENGTH_SHORT).show();
-//        }
+        }catch (Exception e){
+            Toast.makeText(context, "Conexão com o banco falhou", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void abrir(){
@@ -75,11 +76,8 @@ public class ClasseDAO {
         values.put("fornecimento", medicamentos.getFornecimento());
         values.put("forma_farm",medicamentos.getForma_farm());
         values.put("fk_crf_farm", medicamentos.getFk_crf_farm());
-        values.put("quantidade", 1);
-
-
-        values.put("fk_idReceita", 1);
-        values.put("fk_crm_med", ""); ///Corrigir!!!!
+        values.put("fk_crm_med", "");
+        values.put("fk_idReceita", "");
 
         banco.insertOrThrow("medicamento", null, values);
     }
@@ -95,7 +93,16 @@ public class ClasseDAO {
         values.put("fk_paciente_rec", receita.getFk_paciente_rec());
         values.put("fk_med", receita.getFk_med());
         values.put("fk_farm", "");
+
         banco.insertOrThrow("receita",null,values);
+    }
+
+    public void inserirFkIdReceita(int id, String nomeRemedio){
+        banco.execSQL("UPDATE "+"medicamento"+" SET fk_idReceita = "+"'"+id+"' "+ "WHERE nome_medicamento = "+"'"+nomeRemedio+"'");
+    }
+
+    public void inserirFkCrmMed(String fkCrm, String nomeRemedio){
+        banco.execSQL("UPDATE "+"medicamento"+" SET fk_crm_med = "+"'"+fkCrm+"' "+ "WHERE nome_medicamento = "+"'"+nomeRemedio+"'");
     }
 
     // Método para atualizar os dados da tabela receita

@@ -76,6 +76,9 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                     receita.setFk_paciente_rec(textView_cpf_do_paciente.getText().toString());
                     receita.setFk_med(valor);
 
+                    dao.inserirFkCrmMed(valor,textView_nome_remedio.getText().toString());
+                    dao.inserirFkIdReceita(idReceita,textView_nome_remedio.getText().toString());
+
                     if(textView_nome_remedio.getText().toString().equals("") || textView_cpf_do_paciente.getText().toString().equals("") ||
                             textView_dosagem.getText().toString().equals("") || textView_nome_horario.getText().toString().equals("") ||
                             textView_instrucoes.getText().toString().equals("")){

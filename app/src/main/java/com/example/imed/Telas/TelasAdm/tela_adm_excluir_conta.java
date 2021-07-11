@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.imed.Banco.ClasseDAO;
 import com.example.imed.R;
@@ -78,8 +79,8 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(radioButton_farmaceutico_lista.isChecked()){
-                    radioButton_medico_lista.setChecked(false);
 
+                    radioButton_medico_lista.setChecked(false);
                     ListaContas.setAdapter(adapterFarmaceutico);
 
                 }
@@ -90,16 +91,15 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(radioButton_medico_lista.isChecked()){
-                    radioButton_farmaceutico_lista.setChecked(false);
 
+                    radioButton_farmaceutico_lista.setChecked(false);
                     ListaContas.setAdapter(adapterMedico);
+
                 }
             }
         });
 
         //===============================================//
-
-
         SearchView_contas.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -123,16 +123,13 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                 return false;
             }
         });
-
-
         //==============================================//
 
             ListaContas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                     Drawable corAnterior = view.getBackground();
-                    if(previousColor!= null){
+                    if (previousColor != null) {
                         previousColor.setBackground(corAnterior);
                     }
                     previousColor = view;
@@ -140,11 +137,9 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
 
                     if (radioButton_farmaceutico_lista.isChecked()) {
                         itemFarm = adapterFarmaceutico.getItem(position);
-                    }
-                    else {
+                    } else {
                         itemMed = adapterMedico.getItem(position);
                     }
-
                 }
             });
 
@@ -152,20 +147,16 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
         imageButton_excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(radioButton_farmaceutico_lista.isChecked()) {
                     System.out.println(itemFarm);
                     farmaceuticos.remove(itemFarm);
                     dao.deletarContaFarmaceutico(itemFarm.getCrf());
                 }
-
                 else{
                     System.out.println(itemMed);
                     medicos.remove(itemMed);
                     dao.deletarContaMedico(itemMed.getCrm());
                 }
-
-
             }
         });
 
@@ -178,7 +169,6 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                 else{
                     ListaContas.setAdapter(adapterMedico);
                 }
-
             }
         });
 

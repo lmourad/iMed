@@ -16,7 +16,6 @@ public class Conexao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL("Pragma foreign_keys = ON;");
 
         db.execSQL("create table adm(adm_nome varchar(29) primary key not null, " +
@@ -26,7 +25,7 @@ public class Conexao extends SQLiteOpenHelper {
                 "med_nome varchar(29), " +
                 "med_senha varchar(20) not null, " +
                 "fk_adm_med varchar (29) not null," +
-                "foreign key (fk_adm_med) references adm(adm_nome)on delete cascade)");
+                "foreign key (fk_adm_med) references adm(adm_nome))");
 
         db.execSQL("create table farmaceutico(crf varchar(7) primary key not null, " +
                 "farm_nome varchar(29)," +
@@ -63,8 +62,11 @@ public class Conexao extends SQLiteOpenHelper {
                 "foreign key(fk_crm_med) references medico(crm)," +
                 "foreign key(fk_crf_farm) references farmaceutico(crf))");
 
+        db.execSQL("insert into adm(adm_nome, adm_senha) values('contaadm','senhaadm')");
         db.execSQL("insert into adm(adm_nome, adm_senha) values('adm','123')");
-
+        db.execSQL("insert into adm(adm_nome, adm_senha) values('Rhuan Martins','senharhuanadm')");
+        db.execSQL("insert into adm(adm_nome, adm_senha) values('Luciano Moura','senhalucianoadm')");
+        
         db.execSQL("insert into paciente(cpf,paciente_nome,paciente_senha) values('18693915002','Juraci de Oliveira','senhapaciente')");
         db.execSQL("insert into paciente(cpf,paciente_nome,paciente_senha) values('05925005007','Eduardo Trevisoli','senhapaciente')");
         db.execSQL("insert into paciente(cpf,paciente_nome,paciente_senha) values('12345678901','Rodrigo Magalhães','senhapaciente')");
@@ -83,6 +85,8 @@ public class Conexao extends SQLiteOpenHelper {
                 "values('BR0376106','Nicotinell','14 mg','Nicotina','Unidade','Adesivo transdérmico','1100000','1100000','1002')");
         db.execSQL("insert into medicamento(catmat,nome_medicamento,concentracao,pr_ativo,fornecimento,forma_farm,fk_crf_farm,fk_crm_med,fk_idReceita) " +
                 "values('BR0267711','GastroBlock','10 mg','Omeprazol','Cápsula','Cápsula','1234567','1234567','1003')");
+        db.execSQL("insert into medicamento(catmat,nome_medicamento,concentracao,pr_ativo,fornecimento,forma_farm,fk_crf_farm,fk_crm_med,fk_idReceita) " +
+                "values('BR20J2456','Neosoro','0,5mg/ml','Cloridrato de nasazolina','Frasco gotejador', 'Frasco gotejador', '1234567','1000000','1003')");
 
         db.execSQL("insert into receita(idReceita,nome_remedio,horario,dosagem,instrucoes,fk_paciente_rec,fk_farm,fk_med)" +
                 "values('1001', 'Loratadina','Tomar a cada 8 horas','10 mg','Tomar antes de comer', '12345678901','1000000', '1000000')");
@@ -90,7 +94,6 @@ public class Conexao extends SQLiteOpenHelper {
                 "values('1002', 'Omeprazol','Tomar a cada 12 horas','10 mg','Tomar depois de comer', '05925005007','1100000', '1100000')");
         db.execSQL("insert into receita(idReceita,nome_remedio,horario,dosagem,instrucoes,fk_paciente_rec,fk_farm,fk_med)" +
                 "values('1003', 'Nicotina','Tomar a cada 1 hora','14 mg','Sempre que a vontade aparecer', '18693915002','1234567', '1234567')");
-
 
     }
 
