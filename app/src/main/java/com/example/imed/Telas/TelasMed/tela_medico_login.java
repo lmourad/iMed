@@ -30,7 +30,6 @@ public class tela_medico_login extends AppCompatActivity {
         setContentView(R.layout.tela_medico_login);
 
         //==========================================================================//
-
         textField_tela_login_screen_medico_crm = findViewById(R.id.textField_tela_login_screen_medico_crm);
         textField_tela_login_screen_medico_crm.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
 
@@ -42,7 +41,7 @@ public class tela_medico_login extends AppCompatActivity {
         //==========================================================================//
 
 
-
+        //Botão para retornar para a tela anterior
         imgButton_back_tela_login_screen_medico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,9 +49,10 @@ public class tela_medico_login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //========================================//
 
-
-
+        //Botão criado para entrar na tela início médico
+        //Método criado para verificar se o login do médico é valido
         button_tela_login_screen_medico_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,19 +60,18 @@ public class tela_medico_login extends AppCompatActivity {
                     if(dao.obterLoginMedico(textField_tela_login_screen_medico_crm.getText().toString())[0].toString().equals(textPassword_tela_login_screen_medico.getText().toString())){
                         Toast.makeText(tela_medico_login.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(tela_medico_login.this, tela_medico_inicio.class);
-                        intent.putExtra("MedicoCrm", textField_tela_login_screen_medico_crm.getText().toString());
+                        intent.putExtra("MedicoCrm", textField_tela_login_screen_medico_crm.getText().toString());//Envia o dado de qual médico está logado
                         startActivity(intent);
                     }
                     else{
                         Toast.makeText(tela_medico_login.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
                     }
-
                 }catch (NullPointerException e){
                     Toast.makeText(tela_medico_login.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
+        //Fim do método para verificar o login
 
     }
 }

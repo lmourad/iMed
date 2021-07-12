@@ -22,8 +22,10 @@ public class tela_farmaceutico_inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_inicio);
 
+        //Recebendo dado de qual farmacêutico está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("FarmCrf");
+        //==============================================//
 
 
         //============================================================//
@@ -36,6 +38,7 @@ public class tela_farmaceutico_inicio extends AppCompatActivity {
         //============================================================//
 
 
+        //Botão criado para retornar para a tela anterior
         ImageButton_tela_login_screen_medico_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,36 +46,39 @@ public class tela_farmaceutico_inicio extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //===================================================//
 
-
+        //Botão criado para ir para a tela de cadastrar medicamento
         imageButtont_tela_farmaceutico_cadastrar_medicamento_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_inicio.this, tela_farmaceutico_cadastrar_medicamento.class);
-                intent.putExtra("FarmCrf", valor);
+                intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
                 startActivity(intent);
             }
         });
+        //=======================================================//
 
-
+        //Botão criado para ir para a tela de verificar a receita
         imageButton_tela_farmaceutico_verifica_receita_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_inicio.this, tela_farmaceutico_checar_receita.class);
-                intent.putExtra("FarmCrf", valor);
+                intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
                 startActivity(intent);
             }
         });
+        //===========================================================//
 
-
+        //Botão criado para ir para a tela de estoque
         imageButton_farmaceutico_go_to_estoque.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_inicio.this, tela_farmaceutico_estoque.class);
-                intent.putExtra("FarmCrf", valor);
+                intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
                 startActivity(intent);
             }
         });
-
+        //==========================================//
     }
 }

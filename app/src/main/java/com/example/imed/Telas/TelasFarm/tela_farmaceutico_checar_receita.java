@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,29 +25,36 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
 
         ClasseDAO dao = new ClasseDAO(this);
 
-        Intent intent = getIntent();
-        String valor = intent.getStringExtra("FarmCrf");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_checar_receita);
 
+        //Recebendo dado de qual farmacêutico está logado
+        Intent intent = getIntent();
+        String valor = intent.getStringExtra("FarmCrf");
+        //==================================================//
+        
+        //==================================================================================================//
         imageButton_tela_verifica_receita_back = findViewById(R.id.imageButton_tela_verifica_receita_back);
         button_verificar = findViewById(R.id.button_verificar);
 
         editText_verifica_receita = findViewById(R.id.editText_verifica_receita);
         editText_verifica_receita.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});
+        //==================================================================================================//
 
 
+        //Botão que retornar para a tela anterior
         imageButton_tela_verifica_receita_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(tela_farmaceutico_checar_receita.this, tela_farmaceutico_inicio.class);
-                intent.putExtra("FarmCrf", valor);
+                intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
                 startActivity(intent);
             }
         });
+        //=============================================//
 
+        //Método para verificar se a receita é válida
         button_verificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,8 +64,8 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
                             dao.inserirFkFarm(valor, id);
 
                             Intent intent = new Intent(tela_farmaceutico_checar_receita.this, tela_farmaceutico_apresentacao_receita.class);
-                            intent.putExtra("receita", editText_verifica_receita.getText().toString());
-                            intent.putExtra("FarmCrf", valor);
+                            intent.putExtra("receita", editText_verifica_receita.getText().toString());//Envia o dado do id da receita
+                            intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
                             startActivity(intent);
 
                             Toast.makeText(tela_farmaceutico_checar_receita.this, "Receita válida", Toast.LENGTH_SHORT).show();
@@ -72,6 +78,7 @@ public class tela_farmaceutico_checar_receita extends AppCompatActivity {
                 }
             }
         });
+        //Fim do método de verificar se a receita é válida
 
 
     }

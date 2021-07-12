@@ -32,21 +32,14 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_cadastrar_medicamento);
 
+        //Recebendo dado de qual farmacêutico está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("FarmCrf");
+        //===============================================//
 
-
+        //======================================================================================================//
         imageButton_tela_cadastrar_medicamento_back = findViewById(R.id.imageButton_tela_cadastrar_medicamento_back);
-        imageButton_tela_cadastrar_medicamento_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this, tela_farmaceutico_inicio.class);
-                intent.putExtra("FarmCrf", valor);
-                startActivity(intent);
-
-            }
-
-        });
+        Button_cadastrar_medicamentos = findViewById(R.id.Button_cadastrar_medicamentos);
 
         editText_catmat = findViewById(R.id.editText_catmat);
         editText_catmat.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
@@ -65,12 +58,24 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
 
         editText_nome_medicamento = findViewById(R.id.editText_nome_medicamento);
         editText_nome_medicamento.setFilters(new InputFilter[]{new InputFilter.LengthFilter(28)});
+        //======================================================================================================//
 
-        Button_cadastrar_medicamentos = findViewById(R.id.Button_cadastrar_medicamentos);
+        //Botão que retornar para a tela anterior
+        imageButton_tela_cadastrar_medicamento_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this, tela_farmaceutico_inicio.class);
+                intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
+                startActivity(intent);
+            }
+        });
+        //=======================================//
+
+
+        //Método para cadastrar um medicamento novo
         Button_cadastrar_medicamentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
                     medicamentos.setCatmat(editText_catmat.getText().toString());
                     medicamentos.setConcentracao(editText_concentracao.getText().toString());
@@ -98,20 +103,14 @@ public class tela_farmaceutico_cadastrar_medicamento extends AppCompatActivity {
 
                         Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Medicamento cadastrado com sucesso", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(tela_farmaceutico_cadastrar_medicamento.this,tela_farmaceutico_inicio.class);
-                        intent.putExtra("FarmCrf",valor);
+                        intent.putExtra("FarmCrf",valor);//Envia o dado de qual farmacêutico está logado
                     }
                 }catch (SQLiteConstraintException e){
                     Toast.makeText(tela_farmaceutico_cadastrar_medicamento.this, "Esse medicamento já está cadastrado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-
-
-
-
+        //Fim do método para cadastrar um medicamento novo
 
     }
 }

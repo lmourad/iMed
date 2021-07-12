@@ -29,6 +29,7 @@ public class tela_adm_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_adm_login);
 
+        //==================================================================================================//
         textNumber_tela_login_screen_adm_login = findViewById(R.id.textNumber_tela_login_screen_adm_login);
         textNumber_tela_login_screen_adm_login.setFilters(new InputFilter[]{new InputFilter.LengthFilter(29)});
 
@@ -37,6 +38,10 @@ public class tela_adm_login extends AppCompatActivity {
 
 
         imgButton_back_tela_login_screen_adm = findViewById(R.id.imgButton_back_tela_login_screen_adm);
+        button_tela_login_adm_entrar = findViewById(R.id.button_tela_login_adm_entrar);
+        //==================================================================================================//
+
+        //Botão criado para retornar para a tela anterior
         imgButton_back_tela_login_screen_adm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,19 +49,20 @@ public class tela_adm_login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //=================================================//
 
-        button_tela_login_adm_entrar = findViewById(R.id.button_tela_login_adm_entrar);
+        //Botão criado para entrar na tela início adm
+        //Método criado para verificar se o login é um cadastrado
         button_tela_login_adm_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try{
-
                     if(dao.obterLoginAdm(textNumber_tela_login_screen_adm_login.getText().toString())[0].toString().equals(textPassword_tela_login_screen_adm.getText().toString())){
                         Toast.makeText(tela_adm_login.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(tela_adm_login.this, tela_adm_inicio.class);
-                        intent.putExtra("ContaAdm", textNumber_tela_login_screen_adm_login.getText().toString());
+                        intent.putExtra("ContaAdm", textNumber_tela_login_screen_adm_login.getText().toString());//Envia o dado de qual adm está logado
                         startActivity(intent);
                     }else{
                         Toast.makeText(tela_adm_login.this, "Dados incorretos!", Toast.LENGTH_SHORT).show();
@@ -68,5 +74,6 @@ public class tela_adm_login extends AppCompatActivity {
 
             }
         });
+        //Fim do método para verificar o login
     }
 }

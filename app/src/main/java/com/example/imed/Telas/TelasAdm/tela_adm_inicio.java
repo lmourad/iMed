@@ -20,8 +20,10 @@ public class tela_adm_inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_adm_inicio);
 
+        //Recebendo dado de qual adm está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("ContaAdm");
+        //=======================================//
 
         //==================================================//
 
@@ -32,6 +34,8 @@ public class tela_adm_inicio extends AppCompatActivity {
         //================================================//
 
 
+
+        //Botão criado para retornar para a tela anterior
         imageButton_tela_adm_loggedin_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,26 +43,31 @@ public class tela_adm_inicio extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //===============================================//
 
 
+        //Botão criado para ir até a tela de criação de contas farmacêutico/médico
         imageButton_go_to_create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_inicio.this, tela_adm_criar_conta_farm_e_med.class);
-                intent.putExtra("ContaAdm", valor);
+                intent.putExtra("ContaAdm", valor);//Envia o dado de qual adm está logado
                 startActivity(intent);
             }
         });
+        //========================================================================//
 
 
+        //Botão criado para ir até a tela de deletar contas farmacêutico/médico
         imageButton_go_to_delete_account_screen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_inicio.this, tela_adm_excluir_conta.class);
-                intent.putExtra("ContaAdm", valor);
+                intent.putExtra("ContaAdm", valor);//Envia o dado de qual adm está logado
                 startActivity(intent);
             }
         });
+        //=====================================================================//
 
 
     }

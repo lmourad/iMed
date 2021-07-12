@@ -29,6 +29,7 @@ public class tela_farmaceutico_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_login);
 
+        //=============================================================================================//
         textView_tela_login_farmaceutico_crf = findViewById(R.id.textView_tela_login_farmaceutico_crf);
         textView_tela_login_farmaceutico_crf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
 
@@ -37,6 +38,11 @@ public class tela_farmaceutico_login extends AppCompatActivity {
 
 
         imageButton_back_tela_login_farmaceutico = findViewById(R.id.imageButton_back_tela_login_farmaceutico);
+        tela_login_farmaceutico_entrar = findViewById(R.id.tela_login_farmaceutico_entrar);
+
+        //=============================================================================================//
+
+        //Botão criado para retornar para a tela anterior
         imageButton_back_tela_login_farmaceutico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,19 +50,20 @@ public class tela_farmaceutico_login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //===============================================//
 
-
-        tela_login_farmaceutico_entrar = findViewById(R.id.tela_login_farmaceutico_entrar);
+        //Botão criado para entrar na tela início do farmacêutico
         tela_login_farmaceutico_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try{
-                    if(dao.obterLoginFarmaceutico(textView_tela_login_farmaceutico_crf.getText().toString())[0].toString().equals(textView_tela_login_farmaceutico_senha.getText().toString())){
+                    if(dao.obterLoginFarmaceutico(textView_tela_login_farmaceutico_crf.getText().toString())[0].
+                            toString().equals(textView_tela_login_farmaceutico_senha.getText().toString())){
                         Toast.makeText(tela_farmaceutico_login.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(tela_farmaceutico_login.this, tela_farmaceutico_inicio.class);
-                        intent.putExtra("FarmCrf", textView_tela_login_farmaceutico_crf.getText().toString());
+                        intent.putExtra("FarmCrf", textView_tela_login_farmaceutico_crf.getText().toString());//Envia o dado de qual farmacêutico está logado
                         startActivity(intent);
 
                     }
@@ -68,6 +75,7 @@ public class tela_farmaceutico_login extends AppCompatActivity {
                 }
             }
         });
+        //===========================================================//
 
 
     }

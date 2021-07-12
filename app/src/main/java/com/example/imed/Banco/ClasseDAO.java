@@ -1,3 +1,4 @@
+
 package com.example.imed.Banco;
 
 import android.content.ContentValues;
@@ -40,7 +41,7 @@ public class ClasseDAO {
         values.put("paciente_nome", paciente.getNome());
         values.put("paciente_senha", paciente.getSenha());
         banco.insertOrThrow("paciente",null,values);
-    }
+    }//====================================//
 
     //Método para cadastrar um medico
     public void inserirMedico(Medico medico) {
@@ -52,6 +53,7 @@ public class ClasseDAO {
         values.put("fk_adm_med", medico.getFk_adm_med());
         banco.insertOrThrow("medico",null,values);
     }
+    //====================================//
 
     //Método para cadastrar um farmaceutico
     public void inserirFarmaceutico(Farmaceutico farmaceutico){
@@ -62,6 +64,7 @@ public class ClasseDAO {
         values.put("fk_adm_farm", farmaceutico.getFk_adm_farm());
         banco.insertOrThrow("farmaceutico",null,values);
     }
+    //====================================//
 
     //Método para cadastrar um medicamento
     public void inserirMedicamentos(Medicamentos medicamentos){
@@ -77,6 +80,7 @@ public class ClasseDAO {
         values.put("fk_idReceita", "");
         banco.insertOrThrow("medicamento", null, values);
     }
+    //====================================//
 
     //Método para gerar uma receita
     public void gerarReceita(Receita receita){
@@ -92,21 +96,25 @@ public class ClasseDAO {
 
         banco.insertOrThrow("receita",null,values);
     }
+    //====================================//
 
     // Método para atualizar os dados da tabela medicamento
     public void inserirFkIdReceita(int id, String nomeRemedio){
         banco.execSQL("UPDATE "+"medicamento"+" SET fk_idReceita = "+"'"+id+"' "+ "WHERE nome_medicamento = "+"'"+nomeRemedio+"'");
     }
+    //====================================//
 
     // Método para atualizar os dados da tabela medicamento
     public void inserirFkCrmMed(String fkCrm, String nomeRemedio){
         banco.execSQL("UPDATE "+"medicamento"+" SET fk_crm_med = "+"'"+fkCrm+"' "+ "WHERE nome_medicamento = "+"'"+nomeRemedio+"'");
     }
+    //====================================//
 
     // Método para atualizar os dados da tabela receita
     public void inserirFkFarm(String fkFarm, int id){
         banco.execSQL("UPDATE "+"receita"+" SET fk_farm = "+"'"+fkFarm+"' "+ "WHERE idReceita = "+"'"+id+"'");
     }
+    //====================================//
 
     //Método para obter o login dos pacientes
     public Object[] obterLoginPaciente(String cpf){
@@ -117,8 +125,10 @@ public class ClasseDAO {
         while (cursor.moveToNext()) {
             objeto[0] = cursor.getString(cursor.getColumnIndex("paciente_senha"));
         }
+        cursor.close();
         return objeto;
     }
+    //====================================//
 
     //Método para obter o login dos médicos
     public Object[] obterLoginMedico(String crm){
@@ -129,8 +139,10 @@ public class ClasseDAO {
         while (cursor.moveToNext()) {
             objeto[0] = cursor.getString(cursor.getColumnIndex("med_senha"));
         }
+        cursor.close();
         return objeto;
     }
+    //====================================//
 
     //Método para obter o login dos farmacêuticos
     public Object[] obterLoginFarmaceutico(String crf){
@@ -141,8 +153,10 @@ public class ClasseDAO {
         while (cursor.moveToNext()) {
             objeto[0] = cursor.getString(cursor.getColumnIndex("farm_senha"));
         }
+        cursor.close();
         return objeto;
     }
+    //====================================//
 
     //Método para obter o login dos adms
     public Object[] obterLoginAdm(String nome){
@@ -154,9 +168,10 @@ public class ClasseDAO {
         while (cursor.moveToNext()) {
             objeto[0] = cursor.getString(cursor.getColumnIndex("adm_senha"));
         }
-
+        cursor.close();
         return objeto;
     }
+    //====================================//
 
     //Método para retornar receita para o farmacêutico
     public Object[] obterReceita(String idReceita){
@@ -172,8 +187,11 @@ public class ClasseDAO {
             objeto[4] = cursor.getString(cursor.getColumnIndex("instrucoes"));
             objeto[5] = cursor.getString(cursor.getColumnIndex("fk_med"));
         }
+        cursor.close();
+
         return  objeto;
     }
+    //====================================//
 
     //Método para o cpf do paciente
     public String retornaCPF(String cpf){
@@ -183,8 +201,11 @@ public class ClasseDAO {
         while(cursor.moveToNext()){
             retornaCpf = cursor.getString(cursor.getColumnIndex("cpf"));
         }
+        cursor.close();
+
         return  retornaCpf;
     }
+    //====================================//
 
     //Método que retorna idReceita
     public  String retornaIdReceita(String idReceita){
@@ -195,9 +216,11 @@ public class ClasseDAO {
         while (cursor.moveToNext()){
             retornaIdReceita = cursor.getString(cursor.getColumnIndex("idReceita"));
         }
+        cursor.close();
 
         return retornaIdReceita;
     }
+    //====================================//
 
     //Método para obter a lista de farmacêuticos
     public List<Farmaceutico> obterListaFarmaceutico(){
@@ -209,8 +232,11 @@ public class ClasseDAO {
             f.setNome(cursor.getString(cursor.getColumnIndex("farm_nome")));
             farmaceuticos.add(f);
         }
+        cursor.close();
+
         return farmaceuticos;
     }
+    //====================================//
     //Método para obter a lista de médicos
     public List<Medico> obterListaMedico(){
         ArrayList<Medico> medicos = new ArrayList<>();
@@ -222,8 +248,12 @@ public class ClasseDAO {
             m.setNome(cursor.getString(cursor.getColumnIndex("med_nome")));
             medicos.add(m);
         }
+        cursor.close();
+
         return medicos;
     }
+    //====================================//
+
     //Método para obter a lista de receitas
     public List<Receita> obterListaReceita(String cpf){
         ArrayList<Receita> receitas = new ArrayList<>();
@@ -240,8 +270,11 @@ public class ClasseDAO {
             r.setFk_med(cursor.getString(cursor.getColumnIndex("fk_med")));
             receitas.add(r);
         }
+        cursor.close();
+
         return receitas;
     }
+    //====================================//
 
     //Método para obter a lista de medicamentos
     public List<Medicamentos> obterListaMedicamentos(){
@@ -259,19 +292,24 @@ public class ClasseDAO {
             me.setForma_farm(cursor.getString(cursor.getColumnIndex("forma_farm")));
             medicamentos.add(me);
         }
+        cursor.close();
+
         return medicamentos;
     }
+    //====================================//
 
 
     //método para deletar contas de médicos
     public void deletarContaMedico(String m){
         banco.delete("medico", "crm = ?", new String[]{m});
     }
+    //====================================//
 
     //método para deletar contas de farmacêuticos
     public void deletarContaFarmaceutico(String f){
         banco.delete("farmaceutico", "crf = ?", new String[]{f});
     }
+    //====================================//
 
 
 

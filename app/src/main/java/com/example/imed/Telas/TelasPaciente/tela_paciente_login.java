@@ -29,24 +29,21 @@ public class tela_paciente_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_paciente_login);
 
-        imageButton_tela_login_paciente_back = findViewById(R.id.imageButton_tela_login_paciente_back);
-        imageButton_tela_login_paciente_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tela_paciente_login.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        //=========================================================================================================//
         button_tela_paciente_entrar = findViewById(R.id.button_tela_paciente_entrar);
+        imageButton_tela_login_paciente_back = findViewById(R.id.imageButton_tela_login_paciente_back);
+        button_tela_paciente_criar_conta = findViewById(R.id.button_tela_paciente_criar_conta);
 
         textView_tela_login_paciente_cpf = findViewById(R.id.textView_tela_login_paciente_cpf);
         textView_tela_login_paciente_cpf.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
 
         textView_tela_login_paciente_senha = findViewById(R.id.textView_tela_login_paciente_senha);
         textView_tela_login_paciente_senha.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+        //=========================================================================================================//
 
 
+        //Botão criado para entrar na tela início médico
+        //Método criado para verificar se o login do médico é valido
         button_tela_paciente_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +54,7 @@ public class tela_paciente_login extends AppCompatActivity {
                         Toast.makeText(tela_paciente_login.this, "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(tela_paciente_login.this, tela_paciente_inicio.class);
-                        intent.putExtra("PacienteCpf", textView_tela_login_paciente_cpf.getText().toString());
+                        intent.putExtra("PacienteCpf", textView_tela_login_paciente_cpf.getText().toString());//Envia o dado de qual paciente está logado
                         startActivity(intent);
 
                     }
@@ -68,14 +65,11 @@ public class tela_paciente_login extends AppCompatActivity {
                 }catch (NullPointerException e){
                     Toast.makeText(tela_paciente_login.this, "Dados incorretos!", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
             }
         });
+        //Fim do método para verificar o login
 
-        button_tela_paciente_criar_conta = findViewById(R.id.button_tela_paciente_criar_conta);
+        //Botão criado para ir a tela de criação de conta paciente
         button_tela_paciente_criar_conta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +77,17 @@ public class tela_paciente_login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //=====================================================//
 
+        //Botão criado para retornar para a tela anterior
+        imageButton_tela_login_paciente_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tela_paciente_login.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        //====================================================//
 
     }
 

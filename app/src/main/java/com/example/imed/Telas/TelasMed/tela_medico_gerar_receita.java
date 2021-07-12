@@ -36,10 +36,10 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_medico_gerar_receita);
 
+        //Recebendo dado de qual médico está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("MedicoCrm");
-
-
+        //===========================================//
 
         //==========================================================//
         imageButton_go_back_tela_medico_loggedin = findViewById(R.id.imageButton_go_back_tela_medico_loggedin);
@@ -62,6 +62,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
         //==========================================================//
 
 
+        //Método criado para gerar uma regeita
         button_gerar_receita_med.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +90,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                             dao.gerarReceita(receita);
                             Toast.makeText(tela_medico_gerar_receita.this, "Receita criada com sucesso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(tela_medico_gerar_receita.this, tela_medico_inicio.class);
-                            intent.putExtra("MedicoCrm",valor);
+                            intent.putExtra("MedicoCrm",valor);//Envia o dado de qual médico está logado
                             startActivity(intent);
                         }
                         else{
@@ -101,7 +102,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                     }
 
                 }
-                catch (SQLiteConstraintException e){
+                catch (SQLiteConstraintException e){ //Repetimos o código caso o id de uma receita já criado tente inserir no banco e dados
                     int idReceita = random.nextInt(5000) + 1000;
 
                     receita.setIdReceita(idReceita+"");
@@ -111,6 +112,9 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                     receita.setInstrucoes(textView_instrucoes.getText().toString());
                     receita.setFk_paciente_rec(textView_cpf_do_paciente.getText().toString());
                     receita.setFk_med(valor);
+
+                    dao.inserirFkCrmMed(valor,textView_nome_remedio.getText().toString());
+                    dao.inserirFkIdReceita(idReceita,textView_nome_remedio.getText().toString());
 
                     if(textView_nome_remedio.getText().toString().equals("") || textView_cpf_do_paciente.getText().toString().equals("") ||
                             textView_dosagem.getText().toString().equals("") || textView_nome_horario.getText().toString().equals("") ||
@@ -122,7 +126,7 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
                             dao.gerarReceita(receita);
                             Toast.makeText(tela_medico_gerar_receita.this, "Receita criada com sucesso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(tela_medico_gerar_receita.this, tela_medico_inicio.class);
-                            intent.putExtra("MedicoCrm",valor);
+                            intent.putExtra("MedicoCrm",valor);//Envia o dado de qual médico está logado
                             startActivity(intent);
                         }
                         else{
@@ -137,16 +141,18 @@ public class tela_medico_gerar_receita extends AppCompatActivity {
 
             }
         });
+        //Fim do método para gerar um receita
 
+        //Botão criado para retornar para a tela anterior
         imageButton_go_back_tela_medico_loggedin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_medico_gerar_receita.this, tela_medico_inicio.class);
-                intent.putExtra("MedicoCrm",valor);
+                intent.putExtra("MedicoCrm",valor);//Envia o dado de qual médico está logado
                 startActivity(intent);
             }
         });
-
+        //=================================================//
 
 
     }

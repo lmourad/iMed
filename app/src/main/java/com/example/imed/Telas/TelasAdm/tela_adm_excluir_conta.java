@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.InputFilter;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.imed.Banco.ClasseDAO;
 import com.example.imed.R;
@@ -52,9 +51,10 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_adm_excluir_conta);
 
+        //Recebendo valor do login do adm
         Intent intent = getIntent();
         String valor = intent.getStringExtra("ContaAdm");
-
+        //=================================//
 
         //==============================================//
         imageButton_tela_adm_delete_account_go_back = findViewById(R.id.imageButton_tela_adm_delete_account_go_back);
@@ -66,15 +66,23 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
         imageButton_update = findViewById(R.id.imageButton_update);
         //==============================================//
 
+        //============================================//
         radioButton_farmaceutico_lista.setChecked(true);
+        //============================================//
 
+        //Arrayadpater criado para exibir a lista de contas médico
         medicos = dao.obterListaMedico();
-        adapterMedico = new ArrayAdapter<Medico>(this, android.R.layout.simple_list_item_1, medicos);
+        adapterMedico = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, medicos);
+        //=============================================================//
 
+        //Arrayadapter criado para exibir a lista de contas farmacêutico
         farmaceuticos = dao.obterListaFarmaceutico();
-        adapterFarmaceutico = new ArrayAdapter<Farmaceutico>(this, android.R.layout.simple_list_item_1,farmaceuticos);
+        adapterFarmaceutico = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,farmaceuticos);
         ListaContas.setAdapter(adapterFarmaceutico);
+        //=============================================================//
 
+
+        //Método criado para quando clicar no RadioButton farmaceutico exibir a lista das contas faramacêutico
         radioButton_farmaceutico_lista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +94,9 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                 }
             }
         });
+        //Fim do método de exibir as contas farmacêutico
 
+        //Método criado para quando clicar no RadioButton médico exibir a lista das contas médicos
         radioButton_medico_lista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,8 +108,9 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                 }
             }
         });
+        //fim do método de exibir as contas médicos
 
-        //===============================================//
+        //Método criado para pesquisar uma conta na SearchView
         SearchView_contas.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -123,43 +134,50 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                 return false;
             }
         });
-        //==============================================//
+        //Fim do método criado para pesquisar na SearchView
 
-            ListaContas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Drawable corAnterior = view.getBackground();
-                    if (previousColor != null) {
-                        previousColor.setBackground(corAnterior);
-                    }
-                    previousColor = view;
-                    view.setBackgroundColor(Color.parseColor("#00d165"));
-
-                    if (radioButton_farmaceutico_lista.isChecked()) {
-                        itemFarm = adapterFarmaceutico.getItem(position);
-                    } else {
-                        itemMed = adapterMedico.getItem(position);
-                    }
+        //Método criado para mudar a cor e manter um item da lista selecionado quando clicado
+        ListaContas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Drawable corAnterior = view.getBackground();
+                if (previousColor != null) {
+                    previousColor.setBackground(corAnterior);
                 }
-            });
+                previousColor = view;
+                view.setBackgroundColor(Color.parseColor("#00d165"));
 
-        //==============================================//
+                if (radioButton_farmaceutico_lista.isChecked()) {
+                    itemFarm = adapterFarmaceutico.getItem(position);
+                }
+                else {
+                    itemMed = adapterMedico.getItem(position);
+                }
+            }
+        });
+        //Fim do método criado para manter um item da lista selecionado
+
+
+
+        //Método criado para excluir um médico/farmacêutico
+        //Utilizando um método da ClasseDAO
         imageButton_excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(radioButton_farmaceutico_lista.isChecked()) {
-                    System.out.println(itemFarm);
                     farmaceuticos.remove(itemFarm);
                     dao.deletarContaFarmaceutico(itemFarm.getCrf());
                 }
                 else{
-                    System.out.println(itemMed);
                     medicos.remove(itemMed);
                     dao.deletarContaMedico(itemMed.getCrm());
                 }
             }
         });
+        //Fim do método de excluir conta médico/farmacêutico
 
+
+        //Método criado para atualizar a lista após um item ter sido excluido
         imageButton_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,18 +189,21 @@ public class tela_adm_excluir_conta extends AppCompatActivity {
                 }
             }
         });
+        //Fim do método para atualizar a lista
 
-        //==============================================//
 
+
+
+        //Método criado para voltar a tela anterior
         imageButton_tela_adm_delete_account_go_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_adm_excluir_conta.this, tela_adm_inicio.class);
-                intent.putExtra("ContaAdm", valor);
+                intent.putExtra("ContaAdm", valor);//Envia o dado de qual adm está logado
                 startActivity(intent);
             }
         });
-
+        //Fim do método criado para voltar a tela anterior
 
 
 

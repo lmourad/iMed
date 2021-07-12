@@ -33,21 +33,28 @@ public class tela_medico_estoque extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_medico_estoque);
 
+        //Recebendo dado de qual médico está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("MedicoCrm");
+        //===========================================//
 
 
+        //===========================================================================================//
         imageButton_go_back_estoque_medico = findViewById(R.id.imageButton_go_back_estoque_medico);
         SearchView_medicamentos_medico = findViewById(R.id.SearchView_contas);
-
         ListaMedicamentosDisponivel = findViewById(R.id.ListaMedicamentosDisponivel);
-        listaMedicamentos = dao.obterListaMedicamentos();
+        SearchView_medicamentos_medico = findViewById(R.id.SearchView_contas);
+        //===========================================================================================//
 
+        //===========================================================================================//
+        listaMedicamentos = dao.obterListaMedicamentos();
         adapterMedicamentos = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, listaMedicamentos);
         ListaMedicamentosDisponivel.setAdapter(adapterMedicamentos);
-
         //==================================================//
-        SearchView_medicamentos_medico = findViewById(R.id.SearchView_contas);
+
+
+
+        //Método criado para pesquisar um medicamento na SearchView
         SearchView_medicamentos_medico.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -61,10 +68,9 @@ public class tela_medico_estoque extends AppCompatActivity {
                 return false;
             }
         });
-        //==================================================//
+        //Fim do método criado para pesquisar na SearchView
 
-
-
+        //Botão criado para retornar para a tela anterior
         imageButton_go_back_estoque_medico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,5 +79,6 @@ public class tela_medico_estoque extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //==================================================//
     }
 }

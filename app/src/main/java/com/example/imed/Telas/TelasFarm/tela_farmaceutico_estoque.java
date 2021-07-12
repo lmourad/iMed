@@ -33,17 +33,24 @@ public class tela_farmaceutico_estoque extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_farmaceutico_estoque);
 
+        //Recebendo dado de qual farmacêutico está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("FarmCrf");
+        //================================================//
 
+
+        //================================================//
         ListaMedicamentos = findViewById(R.id.ListaMedicamentos);
-        medicamentos = dao.obterListaMedicamentos();
+        SearchView_medicamentos = findViewById(R.id.SearchView_contas);
+        imageButton_go_back_estoque = findViewById(R.id.imageButton_go_back_estoque);
+        //================================================//
 
+
+        medicamentos = dao.obterListaMedicamentos();
         adapterMedicamentos = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, medicamentos);
         ListaMedicamentos.setAdapter(adapterMedicamentos);
 
-        //==================================================//
-        SearchView_medicamentos = findViewById(R.id.SearchView_contas);
+        //Método criado para pesquisar um medicamento na SearchView
         SearchView_medicamentos.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -57,20 +64,19 @@ public class tela_farmaceutico_estoque extends AppCompatActivity {
                 return false;
             }
         });
-        //==================================================//
+        //Fim do método criado para pesquisar na SearchView
 
 
-
-
-        imageButton_go_back_estoque = findViewById(R.id.imageButton_go_back_estoque);
+        //Botão criado para retornar para a tela anterior
         imageButton_go_back_estoque.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_farmaceutico_estoque.this, tela_farmaceutico_inicio.class);
-                intent.putExtra("FarmCrf", valor);
+                intent.putExtra("FarmCrf", valor);//Envia o dado de qual farmacêutico está logado
                 startActivity(intent);
             }
         });
+        //=====================================================//
     }
 
 }

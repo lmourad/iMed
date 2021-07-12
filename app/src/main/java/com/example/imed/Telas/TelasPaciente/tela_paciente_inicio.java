@@ -19,8 +19,10 @@ public class tela_paciente_inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_paciente_inicio);
 
+        //Recebendo dado de qual paciente está logado
         Intent intent = getIntent();
         String valor = intent.getStringExtra("PacienteCpf");
+        //===========================================//
 
         //========================================================================//
 
@@ -29,7 +31,7 @@ public class tela_paciente_inicio extends AppCompatActivity {
 
         //========================================================================//
 
-
+        //Botão criado para retornar para a tela anterior
         imageButton_tela_login_paciente_loggedin_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,16 +40,18 @@ public class tela_paciente_inicio extends AppCompatActivity {
 
             }
         });
+        //===============================================//
 
-
+        //Botão criado para ir a tela de receitas do paciente
         imageButton_go_to_minhas_receitas_paciente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tela_paciente_inicio.this, tela_paciente_examinar_receita.class);
-                intent.putExtra("PacienteCpf", valor);
+                intent.putExtra("PacienteCpf", valor);//Envia o dado de qual paciente está logado
                 startActivity(intent);
             }
         });
+        //====================================================//
 
     }
 }
